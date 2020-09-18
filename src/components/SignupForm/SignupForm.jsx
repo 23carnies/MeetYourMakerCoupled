@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
-import './SignupForm.css'
+import { Link } from "react-router-dom";
+import './signup.css'
 import { Form, Input, Button } from 'semantic-ui-react'
 import authService from "../../services/authService";
 
@@ -130,6 +130,7 @@ class SignupForm extends Component {
           </Form.Field>
           <Button disabled={this.isFormInvalid()}>Sign Up</Button>
         </Form>
+
     );
   }
 }
