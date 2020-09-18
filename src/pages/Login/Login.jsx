@@ -33,6 +33,7 @@ class Login extends Component {
     const {email, pw} = this.state
     return (
       <Container id="mess">
+        <br/><br/><br/><br/><br/>
         <Card fluid id="lc">
           <Image id="image"src="https://www.bates.edu/wordpress/files/2016/07/texture-16.jpg" /> <br/>
           <Card.Header id="hdf">Log In</Card.Header><br/>
