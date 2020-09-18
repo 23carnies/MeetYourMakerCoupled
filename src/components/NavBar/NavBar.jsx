@@ -1,30 +1,77 @@
-import React from 'react';
+import React, { Component } from 'react'
+import { Form, Menu, MenuItem, MenuMenu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
-const NavBar = ({ user, handleLogout }) => {
+export default class NavBar extends Component {
+  state = {}
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+  render() {
+    const { activeItem } = this.state
+    const {user, handleLogout } = this.props
+
     return (
-    <>
-      {user ?
-        <nav>
-          <div className="nav-wrapper">
-            <ul id="nav-mobile" className="right">
-              <li><a href=" " className="nav-link">Welcome, {user.name}</a></li>
-              <li><a href="/users" className="nav-link">Users</a></li>
-              <Link to='' className='NavBar-link' onClick={handleLogout}>LOG OUT</Link>
-            </ul>
-          </div>
-        </nav>
-      :
-        <nav>
-          <div className="nav-wrapper">
-            <ul id="nav-mobile" className="right">
-              <li><a href="/login" className="nav-link">Log In</a></li>
-              <li><a href="/signup" className="nav-link">Sign Up</a></li>
-            </ul>
-          </div>
-        </nav>
-      }
-    </>
-  )
+        <Menu stackable color='blue' inverted>
+        {!user ? <>
+          <Menu.Item>
+          <img src='/logo.png' />
+        </Menu.Item>
+
+        <Menu.Item
+          name='sign-up'
+          active={activeItem === 'testimonials'}
+          onClick={this.handleItemClick}
+        >
+          <a href="/signup">Sign Up</a>
+        </Menu.Item>
+
+        <Menu.Item
+          position='right'
+          name='log-in'
+          active={activeItem === 'sign-in'}
+          onClick={this.handleItemClick}
+        >
+          <a href="/login">Log-in</a>
+        </Menu.Item>
+        </>
+        :
+        user.isSeller===false ?
+        <>
+        <Menu.Item>
+          <img src='/logo.png' />
+        </Menu.Item>
+        <Menu.Item>
+          What?
+        </Menu.Item>
+        <Menu.Item
+          position='right'
+          name='log-out'
+          active={activeItem === 'log-out'}
+          onClick={this.handleItemClick}
+        >
+        <Link to='' onClick={handleLogout}>LOG OUT</Link>
+        </Menu.Item>
+        </>
+        :
+        <>
+        <Menu.Item>
+        <img src='/logo.png' />
+      </Menu.Item>
+      <Menu.Item>
+        inbox
+      </Menu.Item>    
+      <Menu.Item
+        position='right'
+        name='log-out'
+        active={activeItem === 'log-out'}
+        onClick={this.handleItemClick}
+      >
+      <Link to='' onClick={handleLogout}>LOG OUT</Link>
+      </Menu.Item>
+      </>
+     }
+     </Menu>  
+     )
+    }
 }
-export default NavBar;

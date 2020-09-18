@@ -8,6 +8,7 @@
 #mess {
     align-items: center !important;
     text-align: center !important;
+    max-width: 800px !important;
 }
 
 #image {
