@@ -6,6 +6,7 @@ import Login from "../Login/Login";
 import Users from "../Users/Users";
 import authService from "../../services/authService";
 import "./App.css";
+import SellerSetup from '../SellerSetup/SellerSetup'
 
 class App extends Component {
   state = {
