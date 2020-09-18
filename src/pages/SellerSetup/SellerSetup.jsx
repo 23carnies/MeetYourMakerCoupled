@@ -28,6 +28,7 @@ class SellerSetup extends Component {
         <>
         <Form id="cf" ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
         <h1>Store Setup</h1>
+        {/* Name Input */}
           <Form.Field>
             <label>Store Name(required)</label>
             <input
@@ -37,6 +38,7 @@ class SellerSetup extends Component {
               required
             />
           </Form.Field>
+        {/* Store Picture Input */}
           <Form.Field>
             <label>Store Cover(required)</label>
             <input
@@ -46,6 +48,17 @@ class SellerSetup extends Component {
               required
             />
             </Form.Field>
+        {/* Location Input */}
+            <Form.Field>
+            <label>Store City/Neighborhood(required)</label>
+            <input
+              name="storePicture"
+              value={this.state.formData.storePicture}
+              onChange={this.handleChange}
+              required
+            />
+            </Form.Field>
+        {/* Bio Input */}
           <Form.Field>
             <label>Bio</label>
             <input
