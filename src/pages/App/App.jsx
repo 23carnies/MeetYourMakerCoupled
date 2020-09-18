@@ -7,6 +7,7 @@ import Users from "../Users/Users";
 import authService from "../../services/authService";
 import "./App.css";
 import SellerSetup from '../SellerSetup/SellerSetup'
+import CategoryCard from "../../components/CategoryCard/CategoryCard";
 
 class App extends Component {
   state = {
@@ -33,7 +34,8 @@ class App extends Component {
           path="/"
           render={() => (
             <main>
-              <h1>Welcome. This is an authorization template.</h1>
+              <h1>Welcome Atlanta to Meet Your Maker!</h1>
+              <CategoryCard />
             </main>
           )}
         />
