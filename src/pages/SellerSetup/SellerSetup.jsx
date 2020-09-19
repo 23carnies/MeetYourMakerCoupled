@@ -8,6 +8,7 @@ class SellerSetup extends Component {
         formData: {
             storeName: '',
             storePicture: '',
+            storeLocation: '',
             bio: ''
         }
      }
@@ -42,7 +43,7 @@ class SellerSetup extends Component {
           </Form.Field>
         {/* Store Picture Input */}
           <Form.Field>
-            <label>Store Cover(required)</label>
+            <label>Store Cover(image link, required)</label>
             <input
               name="storePicture"
               value={this.state.formData.storePicture}
@@ -54,8 +55,8 @@ class SellerSetup extends Component {
             <Form.Field>
             <label>Store City/Neighborhood(required)</label>
             <input
-              name="storePicture"
-              value={this.state.formData.storePicture}
+              name="storeLocation"
+              value={this.state.formData.storeLocation}
               onChange={this.handleChange}
               required
             />
