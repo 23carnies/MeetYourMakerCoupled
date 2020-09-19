@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Menu, MenuItem, MenuMenu } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
 export default class NavBar extends Component {
@@ -14,8 +14,9 @@ export default class NavBar extends Component {
     return (
         <Menu stackable color='blue' inverted>
         {!user ? <>
+        {/* These links are for visitors not logged in/signed up */}
           <Menu.Item>
-          <img src='/logo.png' />
+          <img src='/logo.png' alt="logo"/>
         </Menu.Item>
 
         <Menu.Item
@@ -36,6 +37,7 @@ export default class NavBar extends Component {
         </Menu.Item>
         </>
         :
+        //These links are for Users that are not Sellers
         user.isSeller===false ?
         <>
         <Menu.Item>
@@ -54,14 +56,26 @@ export default class NavBar extends Component {
         </Menu.Item>
         </>
         :
+        // These Links Are for Sellers
         <>
         <Menu.Item>
         <img src='/logo.png' />
       </Menu.Item>
       <Menu.Item>
         inbox
-      </Menu.Item>    
+      </Menu.Item> 
+     
+      {/* Nav link to SellerSetup form */}
       <Menu.Item
+        name='setup-store'
+        active={activeItem === 'setup-store'}
+        onClick={this.handleItemClick}
+      >
+        <Link to='/setup-store' >Setup Store</Link>
+        
+      </Menu.Item>
+          {/* Log out */}
+          <Menu.Item
         position='right'
         name='log-out'
         active={activeItem === 'log-out'}

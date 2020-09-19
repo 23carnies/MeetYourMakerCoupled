@@ -4,7 +4,7 @@ import { Card } from 'semantic-ui-react'
 
 
 const SellerCard = (props) => (
-    <Card.Group itemsPerRow={4}
+    <Card
       image={user.storePicture}
       header={user.storeName}
       meta={user.storeLocation}
