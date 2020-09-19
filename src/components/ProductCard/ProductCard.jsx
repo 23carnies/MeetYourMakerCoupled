@@ -6,12 +6,16 @@ import { Card } from 'semantic-ui-react'
 const ProductCard = (props) => (
     <Card
       href='#'
+      header={product.name}
       image={product.image}
-      name={product.name}
-      meta={user.storeLocation}
+      meta={product.maker}
+      meta={store.storeLocation}
+      description={product.price}
+      description={product.category}
+      extra={product.countInStock}
       description={product.description}
-      extra='Product Reviews Link Here'
     />
   )
 
   export default ProductCard
+
