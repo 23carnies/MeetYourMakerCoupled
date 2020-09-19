@@ -14,31 +14,28 @@ class SignupForm extends Component {
     phone: "",
     isSeller: false,
   };
-
   handleChange = (e) => {
     this.props.updateMessage("");
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
-
   handleSubmit = async (e) => {
-    const { history, updateMessage, handleSignupOrLogin } = this.props;
+    const { history, updateMessage, handleSignupOrLogin, } = this.props;
     e.preventDefault();
     try {
       await authService.signup(this.state);
       handleSignupOrLogin();
-      history.push("/");
+        history.push("/");
+        
     } catch (err) {
       updateMessage(err.message);
     }
   };
-
   isFormInvalid() {
     const { name, email, password, passwordConf } = this.state;
     return !(name && email && password === passwordConf);
   }
-
   render() {
     const { name, email, password, passwordConf, avatar, phone, isSeller } = this.state;
     return (
@@ -137,5 +134,4 @@ class SignupForm extends Component {
     );
   }
 }
-
 export default SignupForm;

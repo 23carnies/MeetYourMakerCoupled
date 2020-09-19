@@ -8,9 +8,15 @@ import authService from "../../services/authService";
 import "./App.css";
 import SellerSetup from '../SellerSetup/SellerSetup'
 
+import * as storeAPI from "../../services/store-api"
+
+import CategoryCard from "../../components/CategoryCard/CategoryCard";
+
+
 class App extends Component {
   state = {
     user: authService.getUser(),
+    stores: []
   };
 
   handleLogout = () => {
@@ -23,6 +29,13 @@ class App extends Component {
     this.setState({ user: authService.getUser() });
   };
 
+  handleSellerSetup = async newStoreData => {
+    const newStore = await storeAPI.create(newStoreData)
+    this.setState(state => ({
+      stores: [...state.stores, newStore]
+    }), () => this. props.history.push('/store'))
+  }
+
   render() {
     const { user } = this.state
     return (
@@ -33,7 +46,8 @@ class App extends Component {
           path="/"
           render={() => (
             <main>
-              <h1>Welcome. This is an authorization template.</h1>
+              <h1>Welcome Atlanta to Meet Your Maker!</h1>
+              <CategoryCard />
             </main>
           )}
         />
@@ -62,6 +76,17 @@ class App extends Component {
           path="/users"
           render={() => (user ? <Users /> : <Redirect to="/login" />)}
         />
+        <Route 
+          exact path="/setup-store"
+          render={() => 
+            authService.getUser() ?
+            <SellerSetup 
+              handleSellerSetup = {this.handleSellerSetup}
+              user={user}
+            />
+          :
+          <Redirect to ='/login' />
+          }/>
       </>
     );
   }
