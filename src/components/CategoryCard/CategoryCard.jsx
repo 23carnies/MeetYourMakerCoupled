@@ -39,6 +39,7 @@ class CategoryCard extends Component {
                 <Card.Group>
                     {this.state.categories.map(category =>
                         <Card
+                            key={category._id}
                             image={category.image}
                             header={category.name}
                             description={category.description}

@@ -3,11 +3,11 @@ import { Route, Redirect } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
-import Users from "../Users/Users";
+import Sellers from "../Sellers/Sellers";
 import authService from "../../services/authService";
 import "./App.css";
 import SellerSetup from '../SellerSetup/SellerSetup'
-
+import * as userAPI from '../../services/userService'
 import * as storeAPI from "../../services/store-api"
 
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
@@ -29,12 +29,20 @@ class App extends Component {
     this.setState({ user: authService.getUser() });
   };
 
+  
   handleSellerSetup = async newStoreData => {
     const newStore = await storeAPI.create(newStoreData)
     this.setState(state => ({
       stores: [...state.stores, newStore]
-    }), () => this. props.history.push('/store'))
+    }), () => this. props.history.push('/store')
+)}
+
+  async componentDidMount() {
+    const users = await userAPI.getAllUsers();
+    const stores = await storeAPI.getAll()
+    this.setState({users, stores})
   }
+    
 
   render() {
     const { user } = this.state
@@ -71,11 +79,7 @@ class App extends Component {
             />
           )}
         />
-        <Route
-          exact
-          path="/users"
-          render={() => (user ? <Users /> : <Redirect to="/login" />)}
-        />
+
         <Route 
           exact path="/setup-store"
           render={() => 
@@ -86,6 +90,14 @@ class App extends Component {
             />
           :
           <Redirect to ='/login' />
+          }/>
+        <Route 
+          exact path="/sellers"
+          render={() =>
+              <Sellers 
+                stores={this.state.stores}
+                user={user}
+              />
           }/>
       </>
     );
