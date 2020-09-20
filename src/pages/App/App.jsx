@@ -4,6 +4,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
 import Sellers from "../Sellers/Sellers";
+import Calendar from "../Calendar/Calendar"
 import authService from "../../services/authService";
 import "./App.css";
 import SellerSetup from '../SellerSetup/SellerSetup'
@@ -100,6 +101,11 @@ class App extends Component {
                 user={user}
               />
           }/>
+          <Route
+          exact path ="/calendar"
+          render={() =>
+            <Calendar></Calendar>
+          } />
       </>
     );
   }
