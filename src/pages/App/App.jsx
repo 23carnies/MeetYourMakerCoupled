@@ -82,11 +82,12 @@ class App extends Component {
 
         <Route 
           exact path="/setup-store"
-          render={() => 
+          render={({history}) => 
             authService.getUser() ?
             <SellerSetup 
               handleSellerSetup = {this.handleSellerSetup}
               user={user}
+              history={history}
             />
           :
           <Redirect to ='/login' />
