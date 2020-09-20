@@ -1,35 +1,28 @@
 import React, { Component } from "react";
-import { getAllUsers } from "../../services/userService";
-
-class Sellers extends Component {
-  state = {
-    users: [],
-    sellers: []
-  };
-
-  async componentDidMount() {
-    const users = await getAllUsers();
-    this.setState({ users });
-  }
+import SellerCard from "../../components/SellerCard/SellerCard"
+import { Card, Container } from 'semantic-ui-react';
 
 
-
-  render() {
-    return (
-      <>
-        <h1>Hello. This is a list of all the users.</h1>
-        {this.state.users.map((user) => (
-              {...user.isSeller===true ? 
-                
-                <p>{user.store.storeName} </p>
-              :
-              <p>There are no sellers.</p>
-              })
-          
-        )}
-      </>
-    );
-  }
+const Sellers = (props) => {
+  return ( 
+    <>
+      <h1>All Stores</h1>
+      {props.stores ?
+        <Container>
+          <Card.Group itemsPerRow={4}>
+            {props.stores.map(store =>
+              <SellerCard 
+                key={store._id}
+                store={store}
+                user={props.user}
+              />)}
+          </Card.Group>
+        </Container>
+        :
+        <p>Loading...</p>
+      }
+    </>
+   );
 }
-
+ 
 export default Sellers;

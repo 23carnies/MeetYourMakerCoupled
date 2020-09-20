@@ -32,24 +32,17 @@ class App extends Component {
   
   handleSellerSetup = async newStoreData => {
     const newStore = await storeAPI.create(newStoreData)
-    this.handleAddStoreToUser(newStore)
     this.setState(state => ({
       stores: [...state.stores, newStore]
     }), () => this. props.history.push('/store')
-    )}
-    
-    handleAddStoreToUser = async newStore => {
-      console.log('line42', newStore._id)
-      const updateStoreUser = await userAPI.updateStoreToUser(newStore)
-      const newUserArray = this.state.users.map(u =>
-        u._id === updateStoreUser._id ? updateStoreUser : u
-        );
-        this.setState(
-          {users: newUserArray},
-          () => this.props.history.push('/store')
-        )
-    }
+)}
 
+  async componentDidMount() {
+    const users = await userAPI.getAllUsers();
+    const stores = await storeAPI.getAll()
+    this.setState({users, stores})
+  }
+    
 
   render() {
     const { user } = this.state
@@ -86,11 +79,7 @@ class App extends Component {
             />
           )}
         />
-        <Route
-          exact
-          path="/sellers"
-          render={() => (user ? <Sellers /> : <Redirect to="/login" />)}
-        />
+
         <Route 
           exact path="/setup-store"
           render={() => 
@@ -101,6 +90,14 @@ class App extends Component {
             />
           :
           <Redirect to ='/login' />
+          }/>
+        <Route 
+          exact path="/sellers"
+          render={() =>
+              <Sellers 
+                stores={this.state.stores}
+                user={user}
+              />
           }/>
       </>
     );

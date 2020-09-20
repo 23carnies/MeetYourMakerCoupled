@@ -3,12 +3,12 @@ import React from 'react'
 import { Card } from 'semantic-ui-react'
 
 
-const SellerCard = (props) => (
+const SellerCard = ({store}) => (
     <Card
-      image={user.storePicture}
-      header={user.storeName}
-      meta={user.storeLocation}
-      description={user.bio}
+      image={store.storePicture}
+      header={store.storeName}
+      meta={store.storeLocation}
+      description={store.bio}
       extra='Seller Reviews Link Here'
     />
   )
