@@ -40,6 +40,7 @@ const Store = (props) => {
             handleAddProduct = {props.handleAddProduct}
             history={props.history}
             index={props.match.params.idx}
+            strIdx={strIdx}
             />
         }
         </>
@@ -52,10 +53,3 @@ const Store = (props) => {
 }
  
 export default Store;
-
-
-
-
-
-
-
