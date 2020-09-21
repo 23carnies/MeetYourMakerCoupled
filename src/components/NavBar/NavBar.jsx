@@ -74,6 +74,23 @@ export default class NavBar extends Component {
         <Link to='/setup-store' >Setup Store</Link>
         
       </Menu.Item>
+            {/* Nav link to Seller */}
+            <Menu.Item
+        name='sellers'
+        active={activeItem === 'sellers'}
+        onClick={this.handleItemClick}
+      >
+        <Link to='/sellers' >Makers</Link>
+        </Menu.Item>
+              {/* Nav link to Calendar form */}
+      <Menu.Item
+        name='calendar'
+        active={activeItem === 'calendar'}
+        onClick={this.handleItemClick}
+      >
+        <Link to='/calendar' >Events</Link>        
+      </Menu.Item>
+      
           {/* Log out */}
           <Menu.Item
         position='right'
