@@ -41,6 +41,7 @@ class NewProductForm extends Component {
             name="category" 
             value={this.state.formData.category}
             onChange={this.handleChange}>
+                <option value="please select a category">Please Select A Category</option>
                 <option value="cat1">1</option>
                 <option value="cat2">2</option>
                 <option value="cat3">3</option>
@@ -53,7 +54,7 @@ class NewProductForm extends Component {
             <Form.Field>
                 <label>Item Name(required)</label>
                 <input
-                name="productName"
+                name="name"
                 value={this.state.formData.productName}
                 onChange={this.handleChange}
                 required
@@ -63,7 +64,7 @@ class NewProductForm extends Component {
             <Form.Field>
                 <label>Item Image(image link, required)</label>
                 <input
-                name="productImage"
+                name="image"
                 value={this.state.formData.productImage}
                 onChange={this.handleChange}
                 required
