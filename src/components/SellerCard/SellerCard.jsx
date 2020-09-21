@@ -5,6 +5,7 @@ import { Card } from 'semantic-ui-react'
 
 const SellerCard = ({store}) => (
     <Card
+      href={`/store/${store._id}`}
       image={store.storePicture}
       header={store.storeName}
       meta={store.storeLocation}

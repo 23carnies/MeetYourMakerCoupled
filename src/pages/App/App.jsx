@@ -4,20 +4,19 @@ import NavBar from "../../components/NavBar/NavBar";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
 import Sellers from "../Sellers/Sellers";
-import Calendar from "../Calendar/Calendar"
-import authService from "../../services/authService";
-import "./App.css";
 import SellerSetup from '../SellerSetup/SellerSetup'
+import Calendar from "../Calendar/Calendar"
+import "./App.css";
+import authService from "../../services/authService";
 import * as userAPI from '../../services/userService'
 import * as storeAPI from "../../services/store-api"
-
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
-
+import * as productAPI from "../../services/product-api"
 
 class App extends Component {
   state = {
     user: authService.getUser(),
-    stores: []
+    stores: [],
   };
 
   handleLogout = () => {
@@ -35,8 +34,15 @@ class App extends Component {
     const newStore = await storeAPI.create(newStoreData)
     this.setState(state => ({
       stores: [...state.stores, newStore]
-    }), () => this. props.history.push('/store')
+    }), () => this.props.history.push('/store')
 )}
+
+  handleAddProduct = async newProductData => {
+    const newProduct = await productAPI.create(newProductData)
+    this.setState(state => ({
+      products: [...state.products, newProduct]
+    }), () => this.props.history.push('/store'))
+  }
 
   async componentDidMount() {
     const users = await userAPI.getAllUsers();
@@ -106,6 +112,8 @@ class App extends Component {
           render={() =>
             <Calendar></Calendar>
           } />
+
+          
       </>
     );
   }
