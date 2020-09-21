@@ -42,7 +42,7 @@ class App extends Component {
   handleAddProduct = async newProductData => {
     const newProduct = await productAPI.create(newProductData)
     this.setState(state => ({
-      products: [...state.products, newProduct]
+      products: [...state.products, newProduct],
       user: authService.getUser()
     }), () => this.props.history.push('/sellers'))
   }
