@@ -23,6 +23,7 @@ const Store = (props) => {
 
         <h2>Items for Sale</h2>
         {strIdx ?
+        <>
         <div>
             {strIdx.products.map((product, idx) =>
                 <ProductCard 
@@ -32,18 +33,20 @@ const Store = (props) => {
                 />    
             )}
         </div>
-        :
-        <p>Loading...</p>
-        }
-
-
-        {/* New Product Form Here */}
+       
+        
+    {props.user._id===strIdx.createdBy &&
         <NewProductForm 
             handleAddProduct = {props.handleAddProduct}
             history={props.history}
             index={props.match.params.idx}
-        />
-        {/* Edit button for store down here */}
+            />
+        }
+        </>
+        :
+        <p>Loading...</p>
+        }
+
         </>
      );
 }
