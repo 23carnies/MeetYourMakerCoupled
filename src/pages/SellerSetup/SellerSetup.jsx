@@ -11,7 +11,7 @@ class SellerSetup extends Component {
             storeLocation: '',
             bio: ''
         }
-     }
+     } 
 
     handleSubmit = e => {
        e.preventDefault();

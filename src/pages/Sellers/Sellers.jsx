@@ -10,8 +10,9 @@ const Sellers = (props) => {
       {props.stores ?
         <Container>
           <Card.Group itemsPerRow={4}>
-            {props.stores.map(store =>
+            {props.stores.map((store, idx) =>
               <SellerCard 
+                idx={idx}
                 key={store._id}
                 store={store}
                 user={props.user}

@@ -5,13 +5,14 @@ import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
 import Sellers from "../Sellers/Sellers";
 import SellerSetup from '../SellerSetup/SellerSetup'
+import Store from '../Store/Store'
 import Calendar from "../Calendar/Calendar"
 import "./App.css";
 import authService from "../../services/authService";
 import * as userAPI from '../../services/userService'
 import * as storeAPI from "../../services/store-api"
-import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import * as productAPI from "../../services/product-api"
+import CategoryCard from "../../components/CategoryCard/CategoryCard";
 
 class App extends Component {
   state = {
@@ -34,7 +35,7 @@ class App extends Component {
     const newStore = await storeAPI.create(newStoreData)
     this.setState(state => ({
       stores: [...state.stores, newStore]
-    }), () => this.props.history.push('/store')
+    }), () => this.props.history.push('/sellers')
 )}
 
   handleAddProduct = async newProductData => {
@@ -86,7 +87,7 @@ class App extends Component {
             />
           )}
         />
-
+  {/* Seller Store Setup */}
         <Route 
           exact path="/setup-store"
           render={({history}) => 
@@ -112,6 +113,24 @@ class App extends Component {
           render={() =>
             <Calendar></Calendar>
           } />
+         <Route 
+            exact path="/store/:idx"
+            render={({match, history}) => 
+              authService.getUser() ?
+              <>
+                <Store 
+                  history={history}
+                  match={match}
+                  handleAddProduct = {this.handleAddProduct}
+                  user={user}
+                  stores={this.state.stores}
+                  
+                />
+              </>
+              :
+              <Redirect to ='/login' />
+            }
+          />
 
           
       </>
