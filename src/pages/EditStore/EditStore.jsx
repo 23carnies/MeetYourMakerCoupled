@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { Form, Button } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 
 class EditStore extends Component {
     state = { 
         invalidForm: false,
-        formData: this.props.location.state.cheese
+        formData: this.props.location.state.store
     } 
 
     formRef = React.createRef();
@@ -71,6 +72,7 @@ class EditStore extends Component {
             </Form.Field>
           <Button
             type="submit"
+            disabled={this.state.invalidForm}
           >
             Save Store
           </Button>

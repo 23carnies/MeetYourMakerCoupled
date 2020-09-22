@@ -11,7 +11,6 @@ class EditProduct extends Component {
     handleSubmit = e => {
         e.preventDefault();
         this.props.handleUpdateProduct(this.state.formData);
-        this.props.history.push(`/store/${this.props.index}`)
       };
 
     handleChange = e => {
@@ -48,7 +47,7 @@ class EditProduct extends Component {
                 <label>Item Name(required)</label>
                 <input
                 name="name"
-                value={this.state.formData.productName}
+                value={this.state.formData.name}
                 onChange={this.handleChange}
                 required
                 />
@@ -58,7 +57,7 @@ class EditProduct extends Component {
                 <label>Item Image(image link, required)</label>
                 <input
                 name="image"
-                value={this.state.formData.productImage}
+                value={this.state.formData.image}
                 onChange={this.handleChange}
                 required
                 />
