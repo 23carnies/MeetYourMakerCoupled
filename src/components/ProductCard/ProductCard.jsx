@@ -1,21 +1,31 @@
 import userEvent from '@testing-library/user-event'
 import React from 'react'
-import { Card } from 'semantic-ui-react'
+import { Card, Image, Button } from 'semantic-ui-react'
 
 
 const ProductCard = (props) => (
 
-    <Card
-      href='#'
-      header={props.product.name}
-      image={props.product.image}
-      meta={props.product.maker}
-      meta={props.storeLocation}
-      description={props.product.price}
-      description={props.product.category}
-      extra={props.product.countInStock}
-      description={props.product.description}
-    />
+    <Card>
+      <Image src={props.product.image} />
+      <Card.Content>
+        <Card.Header>{props.product.name}</Card.Header>
+        <Card.Meta>{props.product.maker}</Card.Meta>
+        <Card.Meta>{props.storeLocation}</Card.Meta>
+        <Card.Description>{props.product.price}</Card.Description>
+        <Card.Description>{props.product.category}</Card.Description>
+        <Card.Meta>{props.product.countInStock}</Card.Meta>
+        <Card.Description>{props.product.description}</Card.Description>
+        {props.user._id===props.strIdx.createdBy &&
+        <>
+            <Button color='orange'>Update Product</Button>
+        
+            <Button color='red'>Delete Product</Button>
+        </>
+        }
+      </Card.Content>
+    </Card>
+
+
   ) 
 
   export default ProductCard
