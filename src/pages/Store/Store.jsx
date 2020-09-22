@@ -1,8 +1,9 @@
 import userEvent from '@testing-library/user-event';
 import React, { Component } from 'react';
-import { Form, Button, Container } from 'semantic-ui-react'
+import { Container, Button } from 'semantic-ui-react'
 import ProductCard from '../../components/ProductCard/ProductCard'
 import NewProductForm from '../../components/NewProductForm/NewProductForm'
+import { Link } from 'react-router-dom';
 
 const Store = (props) => {
     const strIdx = props.stores[props.match.params.idx]
@@ -26,24 +27,42 @@ const Store = (props) => {
         <>
         <div>
             {strIdx.products.map((product, idx) =>
-                <ProductCard 
-                    key={idx}
-                    product={product}
+                
+                    <ProductCard 
+                        key={idx}
+                        product={product}
+                        strIdx={strIdx}
+                        user={props.user}
+                    />    
 
-                />    
+                
             )}
         </div>
        
         
     {props.user._id===strIdx.createdBy &&
+        <>
         <NewProductForm 
             handleAddProduct = {props.handleAddProduct}
             history={props.history}
             index={props.match.params.idx}
             strIdx={strIdx}
             />
+            <Link
+              to={{
+                  pathname: '/store/edit',
+                  state: {strIdx}
+              }}
+            >
+                <Button color='orange'>Update Store</Button>
+            </Link>
+            <Button color='red' onClick={() => props.handleDeleteStore(props.match.params)}>Delete Store</Button>
+
+        
+        </>
         }
         </>
+
         :
         <p>Loading...</p>
         }
