@@ -14,6 +14,8 @@ import * as storeAPI from "../../services/store-api"
 import * as productAPI from "../../services/product-api"
 import * as eventAPI from "../../services/calendarEvents-api"
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
+import EditProduct from "../EditProduct/EditProduct";
+import EditStore from "../EditStore/EditStore"
 
 class App extends Component {
   state = {
@@ -55,14 +57,46 @@ class App extends Component {
       events: [...state.events, newEvent],
       user: authService.getUser()
     }), () => this.props.history.push('/calendar'))
+
+  handleUpdateProduct = async updatedProductData => {
+    const updatedProduct = await productAPI.update(updatedProductData)
+    const newProductsArray = this.state.products.map(p =>
+      p._id === updatedProduct._id ? updatedProduct : p
+    )
+    this.setState(
+      {products: newProductsArray},
+      () => this.props.history.push('/sellers')
+    )
+  }
+
+  handleUpdateStore = async updatedStoreData => {
+    const updatedStore = await storeAPI.update(updatedStoreData)
+    const newStoresArray = this.state.stores.map(s =>
+      s._id === updatedStore._id ? updatedStore : s
+    )
+    this.setState(
+      {stores: newStoresArray},
+      () => this.props.history.push('/sellers')
+    )
+  }
+
+  handleDeleteStore = async id => {
+    if(authService.getUser()){
+      await storeAPI.deleteOne(id);
+      this.setState(state => ({
+        stores: state.stores.filter(s => s._id !== id)
+      }), () => this.props.history.push('/stores'));
+    } else {
+      this.props.history.push('/login')
+    }
   }
 
   async componentDidMount() {
     const users = await userAPI.getAllUsers();
     const stores = await storeAPI.getAll()
-    this.setState({users, stores})
+    const products = await productAPI.getAll()
+    this.setState({users, stores, products})
   }
-    
 
   render() {
     const { user } = this.state
@@ -112,6 +146,7 @@ class App extends Component {
           :
           <Redirect to ='/login' />
           }/>
+  {/* All Sellers List */}
         <Route 
           exact path="/sellers"
           render={() =>
@@ -120,6 +155,7 @@ class App extends Component {
                 user={user}
               />
           }/>
+      {/* Calendar */}
           <Route
           exact path ="/calendar"
           render={(history) =>
@@ -130,6 +166,7 @@ class App extends Component {
               events={this.state.events}
             />
           } />
+      {/* Store */}
          <Route 
             exact path="/store/:idx"
             render={({match, history}) => 
@@ -139,6 +176,7 @@ class App extends Component {
                   history={history}
                   match={match}
                   handleAddProduct = {this.handleAddProduct}
+                  handleDeleteStore={this.handleDeleteStore}
                   user={user}
                   stores={this.state.stores}
                 />
@@ -147,8 +185,36 @@ class App extends Component {
               <Redirect to ='/login' />
             }
           />
+    {/* Product Update */}
+    <Route 
+      exact path="/product/edit"
+      render={({location}) => 
+        authService.getUser() ?
+        <EditProduct 
+            handleUpdateProduct={this.handleUpdateProduct}
+            
+            location={location}
+            user={user}
+        />
+      :
+      <Redirect to ='/login' />
+      }/>
 
+    {/* Store Update */}
+    <Route 
+      exact path="/Store/edit"
+      render={({location}) => 
+        authService.getUser() ?
+        <EditStore 
+            handleUpdateStore={this.handleUpdateStore}
+            location={location}
+            user={user}
+        />
+      :
+      <Redirect to ='/login' />
+      }/>
           
+
       </>
     );
   }
