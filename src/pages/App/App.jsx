@@ -57,6 +57,7 @@ class App extends Component {
       events: [...state.events, newEvent],
       user: authService.getUser()
     }), () => this.props.history.push('/calendar'))
+}
 
   handleUpdateProduct = async updatedProductData => {
     const updatedProduct = await productAPI.update(updatedProductData)
