@@ -12,6 +12,7 @@ import authService from "../../services/authService";
 import * as userAPI from '../../services/userService'
 import * as storeAPI from "../../services/store-api"
 import * as productAPI from "../../services/product-api"
+import * as eventAPI from "../../services/calendarEvents-api"
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import EditProduct from "../EditProduct/EditProduct";
 import EditStore from "../EditStore/EditStore"
@@ -20,7 +21,8 @@ class App extends Component {
   state = {
     user: authService.getUser(),
     stores: [],
-    products: []
+    products: [],
+    events: [],
   };
 
   handleLogout = () => {
@@ -48,6 +50,13 @@ class App extends Component {
       user: authService.getUser()
     }), () => this.props.history.push('/sellers'))
   }
+
+  handleAddCalendarEvent = async newEventData => {
+    const newEvent = await eventAPI.create(newEventData)
+    this.setState(state => ({
+      events: [...state.events, newEvent],
+      user: authService.getUser()
+    }), () => this.props.history.push('/calendar'))
 
   handleUpdateProduct = async updatedProductData => {
     const updatedProduct = await productAPI.update(updatedProductData)
@@ -88,7 +97,6 @@ class App extends Component {
     const products = await productAPI.getAll()
     this.setState({users, stores, products})
   }
-    
 
   render() {
     const { user } = this.state
@@ -150,8 +158,13 @@ class App extends Component {
       {/* Calendar */}
           <Route
           exact path ="/calendar"
-          render={() =>
-            <Calendar></Calendar>
+          render={(history) =>
+            <Calendar
+              history={history}
+              handleAddCalendarEvent = {this.handleAddCalendarEvent}
+              user={user}
+              events={this.state.events}
+            />
           } />
       {/* Store */}
          <Route 
