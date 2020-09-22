@@ -6,16 +6,20 @@ class CalendarEvent extends Component {
     state = { 
         invalidForm: true,
         formData: {
-            name: '',
-            date: '',
-            description: '',
+            title: '',
+            date: ''
         }
 
      }
 
      handleSubmit = e => {
         e.preventDefault();
-        this.props.handleAddCalendarEvent(this.state.formData)
+        this.props.handleAddCalendarEvent(this.state.formData);
+        this.setState(       {formData: {
+            title: '',
+            date: ''
+        }
+    })
       };
 
     handleChange = e => {
@@ -32,16 +36,21 @@ class CalendarEvent extends Component {
         <>
         <Form id="cf" ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
             <Form.Field>
-                <label>title</label>
-                <input placeholder='name of event' />
+                <label>Event name - location</label>
+                <input placeholder='Event name - Description'
+                    name="title" 
+                    value={this.state.formData.title}
+                    onChange={this.handleChange}
+                    required/>
             </Form.Field>
             <Form.Field>
                 <label>date (format: YYYY-MM-DD)</label>
-                <input placeholder='date' />
-            </Form.Field>
-            <Form.Field>
-                <label>description</label>
-                <input placeholder='info about the event' />
+                <input placeholder='date'
+                    name="date"
+                    value={this.state.formData.date}
+                    onChange={this.handleChange}
+                    required
+                />
             </Form.Field>
             <Button
             type="submit"

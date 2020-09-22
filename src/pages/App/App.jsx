@@ -51,13 +51,6 @@ class App extends Component {
     }), () => this.props.history.push('/sellers'))
   }
 
-  handleAddCalendarEvent = async newEventData => {
-    const newEvent = await eventAPI.create(newEventData)
-    this.setState(state => ({
-      events: [...state.events, newEvent],
-      user: authService.getUser()
-    }), () => this.props.history.push('/calendar'))
-}
 
   handleUpdateProduct = async updatedProductData => {
     const updatedProduct = await productAPI.update(updatedProductData)
@@ -96,7 +89,7 @@ class App extends Component {
     const users = await userAPI.getAllUsers();
     const stores = await storeAPI.getAll()
     const products = await productAPI.getAll()
-    this.setState({users, stores, products})
+    this.setState({users, stores, products })
   }
 
   render() {
@@ -162,9 +155,7 @@ class App extends Component {
           render={(history) =>
             <Calendar
               history={history}
-              handleAddCalendarEvent = {this.handleAddCalendarEvent}
               user={user}
-              events={this.state.events}
             />
           } />
       {/* Store */}
