@@ -45,7 +45,7 @@ class NewProductForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.handleAddProduct(this.state.formData);
+        this.props.handleAddProduct(this.state.formData, this.props.strIdx._id);
         this.props.history.push(`/store/${this.props.index}`)
       };
 

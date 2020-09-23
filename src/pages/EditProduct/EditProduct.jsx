@@ -5,7 +5,8 @@ import axios from 'axios'
 class EditProduct extends Component {
     state = { 
         invalidForm: false,
-        formData: this.props.location.state.product
+        formData: this.props.location.state.product,
+        storeId: this.props.location.strIdx.strIdx._id
     }
 
     handleUploadFile = e => {
@@ -36,7 +37,7 @@ class EditProduct extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.handleUpdateProduct(this.state.formData);
+        this.props.handleUpdateProduct(this.state.formData, this.state.storeId);
       };
 
     handleChange = e => {
