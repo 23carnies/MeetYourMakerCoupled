@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
-import interactionPlugin from '@fullcalendar/interaction';
 import CalendarEvent from '../../components/CalendarEvent/CalendarEvent'
 import * as eventAPI from "../../services/calendarEvents-api"
 
@@ -26,7 +25,7 @@ export default class Calendar extends Component {
     return (
       <>
       <FullCalendar
-        plugins={[ dayGridPlugin, interactionPlugin ]}
+        plugins={[ dayGridPlugin ]}
         initialView="dayGridMonth"
         events={this.state.events}
 
