@@ -8,16 +8,31 @@ import { Link } from 'react-router-dom';
 const Store = (props) => {
     const strIdx = props.stores[props.match.params.idx]
     const index = props.match.params.idx
-
+    
     return ( 
         <>
         {strIdx ?
          <Container>
+         {console.log(strIdx.reviews)}
             <div>{<img src={strIdx.storePicture}></img>}</div>
             <h1>{strIdx.storeName}</h1>
             <h3>{strIdx.storeLocation}</h3>
             <div>{strIdx.bio}</div>
-            <div><p>Reviews will go here</p>            
+            <div>
+                {strIdx.reviews.length ?
+                    <div>
+                        <h4>Reviews</h4>
+                {strIdx.reviews.map(r => 
+                    <>
+                        <p>{r.name}</p> 
+                        <p>{r.rating}</p>           
+                        <p>{r.comment}</p>      
+                    </>     
+                )}
+                    </div>
+                    :
+                    <p>No reviews yet</p>
+                }
             <Link
               to={{
                   pathname: `/store/${strIdx._id}/review`,
@@ -25,7 +40,8 @@ const Store = (props) => {
               }}
             >
                 <Button color='red'>Review Store</Button>
-            </Link></div>
+            </Link>
+            </div>
         </Container> 
          :
          <p>Loading...</p>

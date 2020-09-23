@@ -97,6 +97,7 @@ class App extends Component {
 
   handleReviewForm = async (newReviewData, id) => {
     const newReview = reviewAPI.create(newReviewData, id);
+    console.log(newReview)
     this.setState(
       (state) => ({
        reviews: [...this.state.reviews, newReview]
