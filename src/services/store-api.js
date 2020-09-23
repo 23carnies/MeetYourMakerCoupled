@@ -8,7 +8,6 @@ export function create(store) {
         body: JSON.stringify(store)
     }, { mode: "cors" })
         .then(res => {
-          console.log('line11', res)
           res.json()});
 }
 

@@ -1,24 +1,32 @@
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { Card, Image, Button } from 'semantic-ui-react'
+import {Link} from 'react-router-dom';
 
 
-const ProductCard = (props) => (
+const ProductCard = ({product, strIdx, user}) => (
 
     <Card>
-      <Image src={props.product.image} />
+      <Image src={product.image} wrapped ui={false} />
       <Card.Content>
-        <Card.Header>{props.product.name}</Card.Header>
-        <Card.Meta>{props.product.maker}</Card.Meta>
-        <Card.Meta>{props.storeLocation}</Card.Meta>
-        <Card.Description>{props.product.price}</Card.Description>
-        <Card.Description>{props.product.category}</Card.Description>
-        <Card.Meta>{props.product.countInStock}</Card.Meta>
-        <Card.Description>{props.product.description}</Card.Description>
-        {props.user._id===props.strIdx.createdBy &&
+        <Card.Description>{product.name}</Card.Description>
+        <Card.Meta>{strIdx.storeLocation}</Card.Meta>
+        <Card.Description>{product.price}</Card.Description>
+        <Card.Description>{product.category}</Card.Description>
+        <Card.Meta>{product.countInStock}</Card.Meta>
+        <Card.Description>{product.description}</Card.Description>
+        {user._id===strIdx.createdBy &&
         <>
+            <Link 
+              to={{
+              pathname: '/product/edit',
+              state: {product},
+              strIdx: {strIdx},
+              }}
+            >
             <Button color='orange'>Update Product</Button>
-        
+            </Link>
+            
             <Button color='red'>Delete Product</Button>
         </>
         }
