@@ -16,6 +16,7 @@ import * as eventAPI from "../../services/calendarEvents-api";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import EditProduct from "../EditProduct/EditProduct";
 import EditStore from "../EditStore/EditStore";
+import Review from "../../components/ReviewForm/ReviewForm"
 
 class App extends Component {
   state = {
@@ -23,7 +24,8 @@ class App extends Component {
     stores: [],
     products: [],
     events: [],
-    users: []
+    users: [],
+    reviews: []
   };
 
   handleLogout = () => {
@@ -212,7 +214,27 @@ class App extends Component {
                   handleDeleteStore={this.handleDeleteStore}
                   user={user}
                   stores={this.state.stores}
-                />
+                /> 
+              </>
+            ) : (
+              <Redirect to="/login" />
+            )
+          }
+        />
+                {/* Review */}
+                <Route
+          exact
+          path="/store/:idx/review"
+          render={({ match, history, location }) =>
+            authService.getUser() ? (
+              <>
+                <Review
+                  location={location}
+                  history={history}
+                  match={match}
+                  user={user}
+                  stores={this.state.stores}
+                /> 
               </>
             ) : (
               <Redirect to="/login" />
