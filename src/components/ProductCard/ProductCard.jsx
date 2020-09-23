@@ -4,7 +4,7 @@ import { Card, Image, Button } from 'semantic-ui-react'
 import {Link} from 'react-router-dom';
 
 
-const ProductCard = ({product, strIdx, user}) => (
+const ProductCard = ({product, strIdx, user, handleDeleteProduct, index}) => (
 
     <Card>
       <Image src={product.image} wrapped ui={false} />
@@ -22,12 +22,13 @@ const ProductCard = ({product, strIdx, user}) => (
               pathname: '/product/edit',
               state: {product},
               strIdx: {strIdx},
+              
               }}
             >
             <Button color='orange'>Update Product</Button>
             </Link>
             
-            <Button color='red'>Delete Product</Button>
+            <Button color='red' onClick={() => handleDeleteProduct(product._id, strIdx._id, index)}>Delete Product</Button>
         </>
         }
       </Card.Content>

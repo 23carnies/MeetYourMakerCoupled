@@ -15,8 +15,9 @@ export function getAll() {
     .then(res => res.json())
   }
 
-  export function deleteOne(id) {
-    return fetch(`${BASE_URL}${id}`, {
+  export function deleteOne(p_id, s_id) {
+    console.log(p_id, s_id)
+    return fetch(`${BASE_URL}${s_id}/${p_id}`, {
         method: 'DELETE',
         headers: {'Authorization': 'Bearer ' + tokenService.getToken()}
     }, {mode: "cors"})

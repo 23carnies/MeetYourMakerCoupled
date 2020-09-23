@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 const Store = (props) => {
     const strIdx = props.stores[props.match.params.idx]
+    const index = props.match.params.idx
 
     return ( 
         <>
@@ -33,6 +34,9 @@ const Store = (props) => {
                         product={product}
                         strIdx={strIdx}
                         user={props.user}
+                        handleDeleteProduct={props.handleDeleteProduct}
+                        handleUpdateProduct={props.handleUpdateProduct}
+                        index={index}
                     />    
 
                 
@@ -56,7 +60,7 @@ const Store = (props) => {
             >
                 <Button color='orange'>Update Store</Button>
             </Link>
-            <Button color='red' onClick={() => props.handleDeleteStore(props.match.params)}>Delete Store</Button>
+            <Button color='red' onClick={() => props.handleDeleteStore(strIdx)}>Delete Store</Button>
 
         
         </>
