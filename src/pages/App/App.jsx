@@ -4,18 +4,18 @@ import NavBar from "../../components/NavBar/NavBar";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
 import Sellers from "../Sellers/Sellers";
-import SellerSetup from '../SellerSetup/SellerSetup'
-import Store from '../Store/Store'
-import Calendar from "../Calendar/Calendar"
+import SellerSetup from "../SellerSetup/SellerSetup";
+import Store from "../Store/Store";
+import Calendar from "../Calendar/Calendar";
 import "./App.css";
 import authService from "../../services/authService";
-import * as userAPI from '../../services/userService'
-import * as storeAPI from "../../services/store-api"
-import * as productAPI from "../../services/product-api"
-import * as eventAPI from "../../services/calendarEvents-api"
+import * as userAPI from "../../services/userService";
+import * as storeAPI from "../../services/store-api";
+import * as productAPI from "../../services/product-api";
+import * as eventAPI from "../../services/calendarEvents-api";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import EditProduct from "../EditProduct/EditProduct";
-import EditStore from "../EditStore/EditStore"
+import EditStore from "../EditStore/EditStore";
 
 class App extends Component {
   state = {
@@ -23,6 +23,7 @@ class App extends Component {
     stores: [],
     products: [],
     events: [],
+    users: []
   };
 
   handleLogout = () => {
@@ -35,65 +36,96 @@ class App extends Component {
     this.setState({ user: authService.getUser() });
   };
 
-  
-  handleSellerSetup = async newStoreData => {
-    const newStore = await storeAPI.create(newStoreData)
-    this.setState(state => ({
-      stores: [...state.stores, newStore],
-    }), () => this.props.history.push('/sellers')
-)}
+  handleSellerSetup = async (newStoreData) => {
+    const newStore = await storeAPI.create(newStoreData);
+    console.log(newStore)
+    this.setState(
+      (state) => ({
+        stores: [...state.stores, newStore],
+      }),
+      () => this.props.history.push("/sellers")
+    );
+  };
 
-  handleAddProduct = async newProductData => {
-    const newProduct = await productAPI.create(newProductData)
-    this.setState(state => ({
-      products: [...state.products, newProduct],
-      user: authService.getUser()
-    }), () => this.props.history.push('/sellers'))
-  }
+  handleAddProduct = async (newProductData) => {
+    const newProduct = await productAPI.create(newProductData);
+    this.setState(
+      (state) => ({
+        products: [...state.products, newProduct],
+        user: authService.getUser(),
+      }),
+      () => this.props.history.push("/sellers")
+    );
+  };
 
+  handleAddCalendarEvent = async (newEventData) => {
+    const newEvent = await eventAPI.create(newEventData);
+    this.setState(
+      (state) => ({
+        events: [...state.events, newEvent],
+        user: authService.getUser(),
+      }),
+      () => this.props.history.push("/calendar")
+    );
+  };
 
-  handleUpdateProduct = async updatedProductData => {
-    const updatedProduct = await productAPI.update(updatedProductData)
-    const newProductsArray = this.state.products.map(p =>
+  handleUpdateProduct = async (updatedProductData) => {
+    console.log(updatedProductData)
+    const updatedProduct = await productAPI.update(updatedProductData);
+    const newProductsArray = this.state.products.map((p) =>
       p._id === updatedProduct._id ? updatedProduct : p
-    )
-    this.setState(
-      {products: newProductsArray},
-      () => this.props.history.push('/sellers')
-    )
-  }
+    );
+    this.setState({ products: newProductsArray }, () =>
+      this.props.history.push("/sellers")
+    );
+  };
 
-  handleUpdateStore = async updatedStoreData => {
-    const updatedStore = await storeAPI.update(updatedStoreData)
-    const newStoresArray = this.state.stores.map(s =>
+  handleUpdateStore = async (updatedStoreData) => {
+    const updatedStore = await storeAPI.update(updatedStoreData);
+    const newStoresArray = this.state.stores.map((s) =>
       s._id === updatedStore._id ? updatedStore : s
-    )
-    this.setState(
-      {stores: newStoresArray},
-      () => this.props.history.push('/sellers')
-    )
-  }
+    );
+    this.setState({ stores: newStoresArray }, () =>
+      this.props.history.push("/sellers")
+    );
+  };
 
-  handleDeleteStore = async id => {
-    if(authService.getUser()){
+  handleDeleteStore = async (id) => {
+    if (authService.getUser()) {
       await storeAPI.deleteOne(id);
-      this.setState(state => ({
-        stores: state.stores.filter(s => s._id !== id)
-      }), () => this.props.history.push('/stores'));
+      this.setState(
+        (state) => ({
+          stores: state.stores.filter((s) => s._id !== id),
+        }),
+        () => this.props.history.push("/sellers")
+      );
     } else {
-      this.props.history.push('/login')
+      this.props.history.push("/login");
     }
-  }
+  };
+
+  handleDeleteProduct = async (id) => {
+    if (authService.getUser()) {
+      await productAPI.deleteOne(id);
+      this.setState(
+        (state) => ({
+          products: state.products.filter((s) => s._id !== id),
+        }),
+        () => this.props.history.push("/products")
+      );
+    } else {
+      this.props.history.push("/login");
+    }
+  };
 
   async componentDidMount() {
     const users = await userAPI.getAllUsers();
-    const stores = await storeAPI.getAll()
-    const products = await productAPI.getAll()
-    this.setState({users, stores, products })
+    const stores = await storeAPI.getAll();
+    this.setState({ users, stores });
   }
 
   render() {
-    const { user } = this.state
+    const { user } = this.state;
     return (
       <>
         <NavBar user={user} handleLogout={this.handleLogout} />
@@ -127,86 +159,101 @@ class App extends Component {
             />
           )}
         />
-  {/* Seller Store Setup */}
-        <Route 
-          exact path="/setup-store"
-          render={({history}) => 
-            authService.getUser() ?
-            <SellerSetup 
-              handleSellerSetup = {this.handleSellerSetup}
-              user={user}
-              history={history}
-            />
-          :
-          <Redirect to ='/login' />
-          }/>
-  {/* All Sellers List */}
-        <Route 
-          exact path="/sellers"
-          render={() =>
-              <Sellers 
-                stores={this.state.stores}
+        {/* Seller Store Setup */}
+        <Route
+          exact
+          path="/setup-store"
+          render={({ history }) =>
+            authService.getUser() ? (
+              <SellerSetup
+                handleSellerSetup={this.handleSellerSetup}
                 user={user}
+                history={history}
               />
-          }/>
-      {/* Calendar */}
-          <Route
-          exact path ="/calendar"
-          render={(history) =>
+            ) : (
+              <Redirect to="/login" />
+            )
+          }
+        />
+        {/* All Sellers List */}
+        <Route
+          exact
+          path="/sellers"
+          render={() => 
+            <Sellers 
+            stores={this.state.stores} 
+            user={user} />}
+          />
+        {/* Calendar */}
+        <Route
+          exact
+          path="/calendar"
+          render={(history) => (
             <Calendar
               history={history}
+              handleAddCalendarEvent={this.handleAddCalendarEvent}
               user={user}
             />
-          } />
-      {/* Store */}
-         <Route 
-            exact path="/store/:idx"
-            render={({match, history}) => 
-              authService.getUser() ?
+          )}
+        />
+        {/* Store */}
+        <Route
+          exact
+          path="/store/:idx"
+          render={({ match, history, location }) =>
+            authService.getUser() ? (
               <>
-                <Store 
+                <Store
+                  location={location}
                   history={history}
                   match={match}
-                  handleAddProduct = {this.handleAddProduct}
+                  handleAddProduct={this.handleAddProduct}
+                  handleUpdateProduct={this.handleUpdateProduct}
+                  handleDeleteProduct={this.handleDeleteProduct}
+                  handleUpdateStore={this.handleUpdateStore}
                   handleDeleteStore={this.handleDeleteStore}
                   user={user}
                   stores={this.state.stores}
                 />
               </>
-              :
-              <Redirect to ='/login' />
-            }
-          />
-    {/* Product Update */}
-    <Route 
-      exact path="/product/edit"
-      render={({location}) => 
-        authService.getUser() ?
-        <EditProduct 
-            handleUpdateProduct={this.handleUpdateProduct}
-            
-            location={location}
-            user={user}
+            ) : (
+              <Redirect to="/login" />
+            )
+          }
         />
-      :
-      <Redirect to ='/login' />
-      }/>
-
-    {/* Store Update */}
-    <Route 
-      exact path="/Store/edit"
-      render={({location}) => 
-        authService.getUser() ?
-        <EditStore 
-            handleUpdateStore={this.handleUpdateStore}
-            location={location}
-            user={user}
+        {/* Product Update */}
+        <Route
+          exact
+          path="/product/edit"
+          render={({ location }) =>
+            authService.getUser() ? (
+              <EditProduct
+                handleUpdateProduct={this.handleUpdateProduct}
+                location={location}
+                user={user}
+              />
+            ) : (
+              <Redirect to="/login" />
+            )
+          }
         />
-      :
-      <Redirect to ='/login' />
-      }/>
-          
 
+        {/* Store Update */}
+        <Route
+          exact
+          path="/store/edit"
+          render={({ location }) =>
+            authService.getUser() ? (
+              <EditStore
+                handleUpdateStore={this.handleUpdateStore}
+                location={location}
+                user={user}
+              />
+            ) : (
+              <Redirect to="/login" />
+            )
+          }
+        />
       </>
     );
   }

@@ -37,9 +37,25 @@ export default class NavBar extends Component {
         </Menu.Item>
         </>
         :
-        //These links are for Users that are not Sellers
+        //These links are for Users that are not Sellers------------
         user.isSeller===false ?
         <>
+        {/* Nav link to Seller */}
+        <Menu.Item
+        name='sellers'
+        active={activeItem === 'sellers'}
+        onClick={this.handleItemClick}
+      >
+        <Link to='/sellers' >Makers</Link>
+        </Menu.Item>
+              {/* Nav link to Calendar form */}
+      <Menu.Item
+        name='calendar'
+        active={activeItem === 'calendar'}
+        onClick={this.handleItemClick}
+      >
+        <Link to='/calendar' >Events</Link>        
+      </Menu.Item>
         <Menu.Item>
           <img src='/logo.png' />
         </Menu.Item>
@@ -56,7 +72,7 @@ export default class NavBar extends Component {
         </Menu.Item>
         </>
         :
-        // These Links Are for Sellers
+        // These Links Are for Sellers-------------------
         <>
         <Menu.Item>
         <img src='/logo.png' />
