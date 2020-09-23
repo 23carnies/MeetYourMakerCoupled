@@ -34,23 +34,22 @@ class App extends Component {
 
   handleSignupOrLogin = () => {
     this.setState({ user: authService.getUser() });
+    this.props.history.push('/')
   };
 
   handleSellerSetup = async (newStoreData) => {
     const newStore = await storeAPI.create(newStoreData);
-    console.log(newStore)
     this.setState(
       {stores: [...this.state.stores, newStore]},
       () => this.props.history.push("/sellers")
     );
   };
 
-  handleAddProduct = async (newProductData) => {
-    const newProduct = await productAPI.create(newProductData);
+  handleAddProduct = async (newProductData, id) => {
+    const newProduct = await productAPI.create(newProductData, id);
     this.setState(
       (state) => ({
         products: [...this.state.products, newProduct],
-        user: authService.getUser(),
       }),
       () => this.props.history.push("/sellers")
     );
@@ -67,9 +66,9 @@ class App extends Component {
     );
   };
 
-  handleUpdateProduct = async (updatedProductData) => {
+  handleUpdateProduct = async (updatedProductData, id) => {
     console.log(updatedProductData)
-    const updatedProduct = await productAPI.update(updatedProductData);
+    const updatedProduct = await productAPI.update(updatedProductData, id);
     const newProductsArray = this.state.products.map((p) =>
       p._id === updatedProduct._id ? updatedProduct : p
     );
@@ -78,8 +77,8 @@ class App extends Component {
     );
   };
 
-  handleUpdateStore = async (updatedStoreData) => {
-    const updatedStore = await storeAPI.update(updatedStoreData);
+  handleUpdateStore = async (updatedStoreData, id) => {
+    const updatedStore = await storeAPI.update(updatedStoreData, id);
     const newStoresArray = this.state.stores.map((s) =>
       s._id === updatedStore._id ? updatedStore : s
     );

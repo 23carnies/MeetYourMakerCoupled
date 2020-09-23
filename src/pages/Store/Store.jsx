@@ -55,7 +55,7 @@ const Store = (props) => {
             <Link
               to={{
                   pathname: '/store/edit',
-                  state: {strIdx}
+                  state: {strIdx},
               }}
             >
                 <Button color='orange'>Update Store</Button>

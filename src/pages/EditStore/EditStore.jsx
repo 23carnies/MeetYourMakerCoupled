@@ -6,15 +6,15 @@ import { Link } from 'react-router-dom'
 class EditStore extends Component {
     state = { 
         invalidForm: false,
-        formData: this.props.location.state.store
+        formData: this.props.location.state.strIdx
     } 
 
     formRef = React.createRef();
 
     handleSubmit = e => {
        e.preventDefault();
-       this.props.handleSellerSetup(this.state.formData);
-       this.props.history.push('/store')
+       this.props.handleUpdateStore(this.state.formData);
+
      };
 
     handleChange = e => {
