@@ -38,6 +38,7 @@ class App extends Component {
   
   handleSellerSetup = async newStoreData => {
     const newStore = await storeAPI.create(newStoreData)
+    console.log(newStore)
     this.setState(state => ({
       stores: [...state.stores, newStore],
     }), () => this.props.history.push('/sellers')
@@ -86,7 +87,7 @@ class App extends Component {
       await storeAPI.deleteOne(id);
       this.setState(state => ({
         stores: state.stores.filter(s => s._id !== id)
-      }), () => this.props.history.push('/stores'));
+      }), () => this.props.history.push('/sellers'));
     } else {
       this.props.history.push('/login')
     }

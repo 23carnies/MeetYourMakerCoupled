@@ -16,7 +16,7 @@ class SellerSetup extends Component {
     handleSubmit = e => {
        e.preventDefault();
        this.props.handleSellerSetup(this.state.formData);
-       this.props.history.push('/store')
+       this.props.history.push('/sellers')
      };
 
     handleChange = e => {
