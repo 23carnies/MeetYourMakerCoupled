@@ -1,11 +1,37 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'semantic-ui-react'
-
+import { Form, Button } from 'semantic-ui-react';
+import axios from 'axios'
 
 class EditProduct extends Component {
     state = { 
         invalidForm: false,
         formData: this.props.location.state.product
+    }
+
+    handleUploadFile = e => {
+        e.preventDefault()
+        console.log(e)
+        const file = e.target.files[0];
+        const bodyFormData = new FormData();
+        bodyFormData.append('image', file);
+        axios.post("/api/upload/image-upload", bodyFormData, {
+            headers:{
+            'Content-Type': 'multipart/form-data'
+            }
+        }).then(response => {
+            console.log(response);
+            const imgUrl = response.data.imageUrl
+            console.log(imgUrl)
+            const formData = {...this.state.formData, image: imgUrl}
+            this.setState({
+                formData,
+            })
+            // setImage(response.data);
+            // setUploading(false);
+        }).catch(err =>{
+            console.log(err);
+            // setUploading(false);
+        });
     }
 
     handleSubmit = e => {
@@ -61,6 +87,10 @@ class EditProduct extends Component {
                 onChange={this.handleChange}
                 required
                 />
+            </Form.Field>
+            <Form.Field>
+                <input type="file" name="image" onChange={this.handleUploadFile}></input>
+                {/* {uploading && <div>Uploading...</div>} */}
             </Form.Field>
             {/* Price Input */}
             <Form.Field>
