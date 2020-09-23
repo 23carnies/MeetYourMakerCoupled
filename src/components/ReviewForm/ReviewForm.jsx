@@ -59,12 +59,12 @@ class ReviewForm extends Component {
                     required
                     />
                 </Form.Field>
-                {/* Description Input */}
+                {/* Comment Input */}
                 <Form.Field>
-                    <label>Description(required)</label>
+                    <label>Comment(required)</label>
                     <textarea
-                    name="description"
-                    value={this.state.formData.description}
+                    name="comment"
+                    value={this.state.formData.comment}
                     onChange={this.handleChange}
                     required
                     />

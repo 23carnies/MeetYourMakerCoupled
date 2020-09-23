@@ -5,14 +5,22 @@ import { Route } from "react-router-dom";
 
 
 const SellerCard = ({store, idx}) => (
+  <>
+
+
     <Card
       href={`/store/${idx}`}
       image={store.storePicture}
       header={store.storeName}
       meta={store.storeLocation}
-      description={store.bio}
-      reviews={store.reviews.ratings}
+      //description={store.bio}
+      description={store.reviews.length ? 'Average Review: ' + (store.reviews.reduce((prev, cur) => 
+        ({rating: prev.rating + cur.rating})).rating / store.reviews.length)
+      :
+      'No reviews yet'}
     />
+
+ </>
   )
 
   export default SellerCard
