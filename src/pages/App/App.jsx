@@ -193,7 +193,6 @@ class App extends Component {
               history={history}
               handleAddCalendarEvent={this.handleAddCalendarEvent}
               user={user}
-              events={this.state.events}
             />
           )}
         />
