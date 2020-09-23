@@ -7,8 +7,7 @@ export function create(store) {
         headers: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + tokenService.getToken() },
         body: JSON.stringify(store)
     }, { mode: "cors" })
-        .then(res => {
-          res.json()});
+        .then(res => res.json());
 }
 
 export function getAll() {

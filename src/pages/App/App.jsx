@@ -40,9 +40,7 @@ class App extends Component {
     const newStore = await storeAPI.create(newStoreData);
     console.log(newStore)
     this.setState(
-      (state) => ({
-        stores: [...state.stores, newStore],
-      }),
+      {stores: [...this.state.stores, newStore]},
       () => this.props.history.push("/sellers")
     );
   };
@@ -51,7 +49,7 @@ class App extends Component {
     const newProduct = await productAPI.create(newProductData);
     this.setState(
       (state) => ({
-        products: [...state.products, newProduct],
+        products: [...this.state.products, newProduct],
         user: authService.getUser(),
       }),
       () => this.props.history.push("/sellers")
