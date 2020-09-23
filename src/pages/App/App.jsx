@@ -14,6 +14,7 @@ import * as storeAPI from "../../services/store-api";
 import * as productAPI from "../../services/product-api";
 import * as eventAPI from "../../services/calendarEvents-api";
 import * as mailAPI from "../../services/mail-api"
+import * as reviewAPI from "../../services/review-api"
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import EditProduct from "../EditProduct/EditProduct";
 import EditStore from "../EditStore/EditStore";
@@ -94,6 +95,16 @@ class App extends Component {
     );
   };
 
+  handleReviewForm = async (newReviewData, id) => {
+    const newReview = reviewAPI.create(newReviewData, id);
+    this.setState(
+      (state) => ({
+       reviews: [...this.state.reviews, newReview]
+      }),
+      () => this.props.history.push("/sellers")
+    );
+  };
+  
   handleDeleteStore = async (id) => {
     if (authService.getUser()) {
       await storeAPI.deleteOne(id);
@@ -249,6 +260,7 @@ class App extends Component {
                   match={match}
                   user={user}
                   stores={this.state.stores}
+                  handleReviewForm={this.handleReviewForm}
                 /> 
               </>
             ) : (
