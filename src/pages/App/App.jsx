@@ -13,9 +13,11 @@ import * as userAPI from "../../services/userService";
 import * as storeAPI from "../../services/store-api";
 import * as productAPI from "../../services/product-api";
 import * as eventAPI from "../../services/calendarEvents-api";
+import * as mailAPI from "../../services/mail-api"
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import EditProduct from "../EditProduct/EditProduct";
 import EditStore from "../EditStore/EditStore";
+import Nodemailer from "../Nodemailer/Nodemailer";
 
 class App extends Component {
   state = {
@@ -23,7 +25,8 @@ class App extends Component {
     stores: [],
     products: [],
     events: [],
-    users: []
+    users: [],
+    messages: []
   };
 
   handleLogout = () => {
@@ -40,7 +43,9 @@ class App extends Component {
     const newStore = await storeAPI.create(newStoreData);
     console.log(newStore)
     this.setState(
-      {stores: [...this.state.stores, newStore]},
+      {stores: [...this.state.stores, newStore],
+        user: authService.getUser(),
+      },
       () => this.props.history.push("/sellers")
     );
   };
@@ -114,6 +119,17 @@ class App extends Component {
     } else {
       this.props.history.push("/login");
     }
+  };
+
+  handleNodemailer = async (newMessageData) => {
+    const newMessage = await mailAPI.create(newMessageData);
+    console.log(newMessage)
+    this.setState(
+      {messages: [...this.state.messages, newMessage],
+        user: authService.getUser(),
+      },
+      () => this.props.history.push("/sellers")
+    );
   };
 
   async componentDidMount() {
@@ -245,6 +261,23 @@ class App extends Component {
               <EditStore
                 handleUpdateStore={this.handleUpdateStore}
                 location={location}
+                user={user}
+              />
+            ) : (
+              <Redirect to="/login" />
+            )
+          }
+        />
+
+        {/* Nodemailer */}
+        <Route
+          exact
+          path="/mail"
+          render={({ history }) =>
+            authService.getUser() ? (
+              <Nodemailer
+                handleNodemailer={this.handleNodemailer}
+                history={history}
                 user={user}
               />
             ) : (
