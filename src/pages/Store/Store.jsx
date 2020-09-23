@@ -36,7 +36,12 @@ const Store = (props) => {
         <>
         <div>
             {strIdx.products.map((product, idx) =>
-                
+                <Link
+                to={{
+                    pathname: '/mail',
+                    state: {strIdx, product}
+                }}
+              >
                     <ProductCard 
                         key={idx}
                         product={product}
@@ -46,6 +51,7 @@ const Store = (props) => {
                         handleUpdateProduct={props.handleUpdateProduct}
                         index={index}
                     />    
+                </Link>
 
                 
             )}
