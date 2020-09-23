@@ -17,7 +17,15 @@ const Store = (props) => {
             <h1>{strIdx.storeName}</h1>
             <h3>{strIdx.storeLocation}</h3>
             <div>{strIdx.bio}</div>
-            <div><p>Reviews will go here</p></div>
+            <div><p>Reviews will go here</p>            
+            <Link
+              to={{
+                  pathname: `/store/${strIdx._id}/review`,
+                  state: {strIdx}
+              }}
+            >
+                <Button color='red'>Review Store</Button>
+            </Link></div>
         </Container> 
          :
          <p>Loading...</p>
@@ -61,7 +69,7 @@ const Store = (props) => {
             <Link
               to={{
                   pathname: '/store/edit',
-                  state: {strIdx}
+                  state: {strIdx},
               }}
             >
                 <Button color='orange'>Update Store</Button>

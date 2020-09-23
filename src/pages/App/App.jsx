@@ -18,6 +18,7 @@ import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import EditProduct from "../EditProduct/EditProduct";
 import EditStore from "../EditStore/EditStore";
 import Nodemailer from "../Nodemailer/Nodemailer";
+import Review from "../../components/ReviewForm/ReviewForm"
 
 class App extends Component {
   state = {
@@ -27,6 +28,7 @@ class App extends Component {
     events: [],
     users: [],
     messages: []
+    reviews: []
   };
 
   handleLogout = () => {
@@ -37,11 +39,11 @@ class App extends Component {
 
   handleSignupOrLogin = () => {
     this.setState({ user: authService.getUser() });
+    this.props.history.push('/')
   };
 
   handleSellerSetup = async (newStoreData) => {
     const newStore = await storeAPI.create(newStoreData);
-    console.log(newStore)
     this.setState(
       {stores: [...this.state.stores, newStore],
         user: authService.getUser(),
@@ -50,12 +52,11 @@ class App extends Component {
     );
   };
 
-  handleAddProduct = async (newProductData) => {
-    const newProduct = await productAPI.create(newProductData);
+  handleAddProduct = async (newProductData, id) => {
+    const newProduct = await productAPI.create(newProductData, id);
     this.setState(
       (state) => ({
         products: [...this.state.products, newProduct],
-        user: authService.getUser(),
       }),
       () => this.props.history.push("/sellers")
     );
@@ -72,9 +73,9 @@ class App extends Component {
     );
   };
 
-  handleUpdateProduct = async (updatedProductData) => {
+  handleUpdateProduct = async (updatedProductData, id) => {
     console.log(updatedProductData)
-    const updatedProduct = await productAPI.update(updatedProductData);
+    const updatedProduct = await productAPI.update(updatedProductData, id);
     const newProductsArray = this.state.products.map((p) =>
       p._id === updatedProduct._id ? updatedProduct : p
     );
@@ -83,8 +84,8 @@ class App extends Component {
     );
   };
 
-  handleUpdateStore = async (updatedStoreData) => {
-    const updatedStore = await storeAPI.update(updatedStoreData);
+  handleUpdateStore = async (updatedStoreData, id) => {
+    const updatedStore = await storeAPI.update(updatedStoreData, id);
     const newStoresArray = this.state.stores.map((s) =>
       s._id === updatedStore._id ? updatedStore : s
     );
@@ -228,7 +229,27 @@ class App extends Component {
                   handleDeleteStore={this.handleDeleteStore}
                   user={user}
                   stores={this.state.stores}
-                />
+                /> 
+              </>
+            ) : (
+              <Redirect to="/login" />
+            )
+          }
+        />
+                {/* Review */}
+                <Route
+          exact
+          path="/store/:idx/review"
+          render={({ match, history, location }) =>
+            authService.getUser() ? (
+              <>
+                <Review
+                  location={location}
+                  history={history}
+                  match={match}
+                  user={user}
+                  stores={this.state.stores}
+                /> 
               </>
             ) : (
               <Redirect to="/login" />
