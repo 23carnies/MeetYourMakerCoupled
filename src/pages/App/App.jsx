@@ -93,7 +93,7 @@ class App extends Component {
       await storeAPI.deleteOne(id);
       this.setState(
         (state) => ({
-          stores: state.stores.filter((s) => s._id !== id),
+          stores: state.stores.filter(s => s._id !== id),
         }),
         () => this.props.history.push("/sellers")
       );
@@ -102,14 +102,14 @@ class App extends Component {
     }
   };
 
-  handleDeleteProduct = async (id) => {
+  handleDeleteProduct = async (p_id, s_id, index) => {
     if (authService.getUser()) {
-      await productAPI.deleteOne(id);
+      let newStore = await productAPI.deleteOne(p_id, s_id);
+      let newStoreArray = this.state.stores.map(s => s._id === newStore._id ?
+        newStore : s )
       this.setState(
-        (state) => ({
-          products: state.products.filter((s) => s._id !== id),
-        }),
-        () => this.props.history.push("/products")
+       {stores: newStoreArray},
+        () => this.props.history.push(`/store/${index}`)
       );
     } else {
       this.props.history.push("/login");
