@@ -60,7 +60,7 @@ const Store = (props) => {
             >
                 <Button color='orange'>Update Store</Button>
             </Link>
-            <Button color='red' onClick={() => props.handleDeleteStore(strIdx)}>Delete Store</Button>
+            <Button color='red' onClick={() => props.handleDeleteStore(strIdx._id)}>Delete Store</Button>
 
         
         </>
