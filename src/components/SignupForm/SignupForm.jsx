@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import './signup.css'
 import { Form, Input, Button } from 'semantic-ui-react'
 import authService from "../../services/authService";
+import axios from "axios"
 
 class SignupForm extends Component {
   state = {
@@ -10,10 +11,36 @@ class SignupForm extends Component {
     email: "",
     password: "",
     passwordConf: "",
-    avatar: "",
+    avatar: '',
     phone: "",
     isSeller: false,
   };
+
+  handleUploadFile = e => {
+    e.preventDefault()
+    console.log(e)
+    const file = e.target.files[0];
+    const bodyFormData = new FormData();
+    bodyFormData.append('image', file);
+    axios.post("/api/upload/image-upload", bodyFormData, {
+        headers:{
+        'Content-Type': 'multipart/form-data'
+        }
+    }).then(response => {
+        console.log(response);
+        const imgUrl = response.data.imageUrl
+        console.log(imgUrl)
+        this.setState({
+          avatar: imgUrl,
+        })
+        // setImage(response.data);
+        // setUploading(false);
+    }).catch(err =>{
+        console.log(err);
+        // setUploading(false);
+    });
+}
+
   handleChange = (e) => {
     this.props.updateMessage("");
     this.setState({
@@ -70,7 +97,7 @@ class SignupForm extends Component {
           <Form.Field>
           <label htmlFor="avatar">Avatar Image</label>
           <input
-            placeholder="http://www.image.png"
+            // placeholder="http://www.image.png"
             type="text"
             autoComplete="off"
             id="avatar"
@@ -79,6 +106,10 @@ class SignupForm extends Component {
             onChange={this.handleChange}
           />
           </Form.Field>
+          <Form.Field>
+                <input type="file" name="avatar" onChange={this.handleUploadFile}></input>
+                {/* {uploading && <div>Uploading...</div>} */}
+            </Form.Field>
           <br/>
           <Form.Field>
           <label htmlFor="phone">Phone</label>
