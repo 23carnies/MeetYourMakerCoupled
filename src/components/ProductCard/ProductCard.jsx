@@ -1,7 +1,6 @@
-import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { Card, Image, Button } from 'semantic-ui-react'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const ProductCard = ({product, strIdx, user, handleDeleteProduct, index}) => (
@@ -28,7 +27,7 @@ to={{
               pathname: '/product/edit',
               state: {product},
               strIdx: {strIdx},
-              
+              index: {index}
               }}
             >
             <Button color='orange'>Update Product</Button>
@@ -38,9 +37,7 @@ to={{
         </>
         }
       </Card.Content>
-    </Card>
-
-
+    </Card>            
   ) 
 
   export default ProductCard

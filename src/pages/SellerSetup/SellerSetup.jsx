@@ -31,11 +31,8 @@ class SellerSetup extends Component {
           this.setState({
               formData,
           })
-          // setImage(response.data);
-          // setUploading(false);
       }).catch(err =>{
           console.log(err);
-          // setUploading(false);
       });
   }
 
@@ -51,7 +48,6 @@ class SellerSetup extends Component {
          formData,
        });
      };
-
 
     render() { 
         return ( 
@@ -80,7 +76,6 @@ class SellerSetup extends Component {
             </Form.Field>
             <Form.Field>
                 <input type="file" name="storePicture" onChange={this.handleUploadFile}></input>
-                {/* {uploading && <div>Uploading...</div>} */}
             </Form.Field>
         {/* Location Input */}
             <Form.Field>

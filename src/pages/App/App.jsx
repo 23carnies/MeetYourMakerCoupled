@@ -165,7 +165,6 @@ class App extends Component {
               <h1>Welcome Atlanta to Meet Your Maker!</h1>
               <br/> <br/>
               <CategoryCard 
-              
               />
               <br/> <br/>
             </main>
@@ -298,11 +297,13 @@ class App extends Component {
         <Route
           exact
           path="/product/edit"
-          render={({ location }) =>
+          render={({ location, history, match }) =>
             authService.getUser() ? (
               <EditProduct
                 handleUpdateProduct={this.handleUpdateProduct}
                 location={location}
+                history={history}
+                match={match}
                 user={user}
               />
             ) : (
