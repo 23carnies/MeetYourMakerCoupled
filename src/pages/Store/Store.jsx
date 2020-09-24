@@ -17,24 +17,21 @@ const Store = (props) => {
          {console.log(strIdx.reviews)}
             <div>{<img src={strIdx.storePicture}></img>}</div>
             <h1>{strIdx.storeName}</h1>
-            <h3>{strIdx.storeLocation}</h3>
-            <div>{strIdx.bio}</div>
+            <h3>Location: {strIdx.storeLocation}</h3>
+            <div>Bio: {strIdx.bio}</div>
             <div>
-                {strIdx.reviews.length ?
-                    <div>
-                        <h4>Reviews</h4>
-                        <Card.Group>
-                {strIdx.reviews.map((review, idx) => 
+                {strIdx.reviews.length ?   
                     <>
-                        <ReviewCard 
-                          key={idx}
-                          review={review}
-                          strIdx={strIdx}
-                        />      
+                        <p>Average Review:  {(strIdx.reviews.reduce((prev, cur) => 
+        ({rating: prev.rating + cur.rating})).rating / strIdx.reviews.length)}  
+        <Link
+          to={{
+            pathname: `/store/${strIdx._id}/reviews`,
+            state: {strIdx}
+            }}
+        >
+        View All Reviews</Link></p>
                     </>     
-                )}
-                    </Card.Group>
-                    </div>
                     :
                     <p>No reviews yet</p>
                 }
@@ -111,3 +108,11 @@ const Store = (props) => {
 }
  
 export default Store;
+
+
+
+// <ReviewCard 
+// key={idx}
+// review={review}
+// strIdx={strIdx}
+// />      

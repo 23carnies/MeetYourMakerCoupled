@@ -1,12 +1,12 @@
 import React from 'react'
 import { Card } from 'semantic-ui-react';
 
-const ReviewCard = ({strIdx}) => {
+const ReviewCard = ({review}) => {
     return ( 
         <Card
-            header={strIdx.reviews.rating}
-            meta={strIdx.reviews.name}
-            description={strIdx.reviews.comment}
+        header={review.rating}
+        meta={review.name}
+        description={review.comment}
         />
      );
 }

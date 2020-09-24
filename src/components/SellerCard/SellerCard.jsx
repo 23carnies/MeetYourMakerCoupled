@@ -13,11 +13,7 @@ const SellerCard = ({store, idx}) => (
       image={store.storePicture}
       header={store.storeName}
       meta={store.storeLocation}
-      //description={store.bio}
-      description={store.reviews.length ? 'Average Review: ' + (store.reviews.reduce((prev, cur) => 
-        ({rating: prev.rating + cur.rating})).rating / store.reviews.length)
-      :
-      'No reviews yet'}
+      description={store.bio}
     />
 
  </>

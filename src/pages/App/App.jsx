@@ -20,6 +20,7 @@ import EditProduct from "../EditProduct/EditProduct";
 import EditStore from "../EditStore/EditStore";
 import Nodemailer from "../Nodemailer/Nodemailer";
 import Review from "../../components/ReviewForm/ReviewForm"
+import Reviews from '../../pages/Reviews/Reviews'
 
 class App extends Component {
   state = {
@@ -262,6 +263,26 @@ class App extends Component {
                   user={user}
                   stores={this.state.stores}
                   handleReviewForm={this.handleReviewForm}
+                /> 
+              </>
+            ) : (
+              <Redirect to="/login" />
+            )
+          }
+        />
+                        {/* Reviews View */}
+                        <Route
+          exact
+          path="/store/:idx/reviews"
+          render={({ match, history, location }) =>
+            authService.getUser() ? (
+              <>
+                <Reviews
+                  location={location}
+                  history={history}
+                  match={match}
+                  user={user}
+                  stores={this.state.stores}
                 /> 
               </>
             ) : (
