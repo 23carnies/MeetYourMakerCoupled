@@ -270,8 +270,8 @@ class App extends Component {
             )
           }
         />
-                        {/* Reviews View */}
-                        <Route
+              {/* Reviews View */}
+          <Route
           exact
           path="/store/:idx/reviews"
           render={({ match, history, location }) =>
