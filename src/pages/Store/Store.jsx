@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Button } from 'semantic-ui-react'
+import { Container, Button, Card } from 'semantic-ui-react'
 import ProductCard from '../../components/ProductCard/ProductCard'
 import NewProductForm from '../../components/NewProductForm/NewProductForm'
 import { Link } from 'react-router-dom';
