@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SignupForm from '../../components/SignupForm/SignupForm';
-
+import {Container} from 'semantic-ui-react'
 class Signup extends Component {
   state = {
     message: ''
@@ -13,8 +13,11 @@ class Signup extends Component {
   render() {
     return (
       <main>
+        <Container>
         <SignupForm {...this.props} updateMessage={this.updateMessage} />
+        All fields are required
         <p>{this.state.message}</p>
+        </Container>
       </main>
     );
   }

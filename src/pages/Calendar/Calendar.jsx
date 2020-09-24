@@ -26,7 +26,7 @@ export default class Calendar extends Component {
 
     return (
       <>
-      <Container>
+      <Container id="back">
       <FullCalendar
         plugins={[ dayGridPlugin ]}
         initialView="dayGridMonth"
@@ -35,14 +35,14 @@ export default class Calendar extends Component {
       />
       </Container>
       <br/><br/>
-      <Container id='cs'>
+      <div id='cs'>
        
       <CalendarEvent
           handleAddCalendarEvent = {this.handleAddCalendarEvent}
           history={this.props.history}
       />
     
-      </Container>
+      </div>
       </>
     )
   }

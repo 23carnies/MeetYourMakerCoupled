@@ -1,18 +1,19 @@
 import React from 'react'
 import { Card, Image, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
+import './ProductCard.css'
 
 
 const ProductCard = ({product, strIdx, user, handleDeleteProduct, index}) => (
-    <Card centered>
+    <Card centered id="cc">
       <Image src={product.image} wrapped ui={false} alt="cheese"/>
       <Card.Content>
-        <Card.Description>{product.name}</Card.Description>
-        <Card.Meta>{strIdx.storeLocation}</Card.Meta>
-        <Card.Description>{product.price}</Card.Description>
-        <Card.Description>{product.category}</Card.Description>
-        <Card.Meta>{product.countInStock}</Card.Meta>
-        <Card.Description>{product.description}</Card.Description>
+        <Card.Description>Product: {product.name}</Card.Description>
+        <Card.Meta>Location: {strIdx.storeLocation}</Card.Meta>
+        <Card.Description>Price: {product.price}</Card.Description>
+        <Card.Description>Category: {product.category}</Card.Description>
+        <Card.Meta>Number Available: {product.countInStock}</Card.Meta>
+        <Card.Description>Description: {product.description}</Card.Description>
         <Link
 to={{
     pathname: '/mail',
