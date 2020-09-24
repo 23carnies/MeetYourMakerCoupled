@@ -104,9 +104,7 @@ class SignupForm extends Component {
             onChange={this.handleChange}
           />
           </Form.Field>
-          <Form.Field>
-                <input type="file" name="avatar" class="six wide field" onChange={this.handleUploadFile}></input>
-            </Form.Field>
+         
           <br/>
           <Form.Field>
           <label htmlFor="phone">Phone</label>
