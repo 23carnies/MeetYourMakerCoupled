@@ -1,7 +1,8 @@
 import userEvent from '@testing-library/user-event';
 import React, { Component } from 'react';
-import { Container, Button } from 'semantic-ui-react'
+import { Container, Button, Card } from 'semantic-ui-react'
 import ProductCard from '../../components/ProductCard/ProductCard'
+import ReviewCard from '../../components/ReviewCard/ReviewCard'
 import NewProductForm from '../../components/NewProductForm/NewProductForm'
 import { Link } from 'react-router-dom';
 
@@ -22,13 +23,17 @@ const Store = (props) => {
                 {strIdx.reviews.length ?
                     <div>
                         <h4>Reviews</h4>
-                {strIdx.reviews.map(r => 
+                        <Card.Group>
+                {strIdx.reviews.map((review, idx) => 
                     <>
-                        <p>{r.name}</p> 
-                        <p>{r.rating}</p>           
-                        <p>{r.comment}</p>      
+                        <ReviewCard 
+                          key={idx}
+                          review={review}
+                          strIdx={strIdx}
+                        />      
                     </>     
                 )}
+                    </Card.Group>
                     </div>
                     :
                     <p>No reviews yet</p>
