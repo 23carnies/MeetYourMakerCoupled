@@ -18,6 +18,7 @@ function signup(user) {
   .then(({ token }) => {
     tokenService.setToken(token);
   })
+  .catch(err => {console.error(err)})
 }
 
 function getUser() {
