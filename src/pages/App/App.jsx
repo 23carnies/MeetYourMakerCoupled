@@ -295,11 +295,13 @@ class App extends Component {
         <Route
           exact
           path="/product/edit"
-          render={({ location }) =>
+          render={({ location, history, match }) =>
             authService.getUser() ? (
               <EditProduct
                 handleUpdateProduct={this.handleUpdateProduct}
                 location={location}
+                history={history}
+                match={match}
                 user={user}
               />
             ) : (
