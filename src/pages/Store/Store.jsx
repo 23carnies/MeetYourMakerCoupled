@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 const Store = (props) => {
     const strIdx = props.stores[props.match.params.idx]
     const index = props.match.params.idx
+    console.log(props.stores)
     
     return ( 
         <>
@@ -35,14 +36,25 @@ const Store = (props) => {
                     :
                     <p>No reviews yet</p>
                 }
+                <>
+            
+            {props.user._id !== strIdx.createdBy ?
+            
             <Link
               to={{
                   pathname: `/store/${strIdx._id}/review`,
                   state: {strIdx}
               }}
             >
+
                 <Button color='red'>Review Store</Button>
             </Link>
+            
+            :
+            <>
+            </>
+            }     
+            </>      
             </div>
         </Container> 
          :
