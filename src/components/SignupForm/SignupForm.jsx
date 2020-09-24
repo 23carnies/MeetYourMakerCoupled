@@ -73,6 +73,7 @@ class SignupForm extends Component {
             id="name"
             value={name}
             name="name"
+            class="six wide field"
             onChange={this.handleChange}
           />  
           </Form.Field>
@@ -86,6 +87,7 @@ class SignupForm extends Component {
             id="email"
             value={email}
             name="email"
+            class="six wide field"
             onChange={this.handleChange}
           />
           </Form.Field>
@@ -98,11 +100,12 @@ class SignupForm extends Component {
             id="avatar"
             value={avatar}
             name="avatar"
+            class="six wide field"
             onChange={this.handleChange}
           />
           </Form.Field>
           <Form.Field>
-                <input type="file" name="avatar" onChange={this.handleUploadFile}></input>
+                <input type="file" name="avatar" class="six wide field" onChange={this.handleUploadFile}></input>
             </Form.Field>
           <br/>
           <Form.Field>
@@ -114,16 +117,18 @@ class SignupForm extends Component {
             id="phone"
             value={phone}
             name="phone"
+            class="six wide field"
             onChange={this.handleChange}
           />
           </Form.Field>
           <br/>
-          <Form.Field>
+          <Form.Field inline>
           <label htmlFor="isSeller">Are you a seller?</label>
           <select
             id="isSeller"
             value={isSeller}
             name="isSeller"
+            class="two wide field"
             onChange={this.handleChange}>
             <option value="true">Yes</option>
             <option value="false">No</option>
@@ -138,6 +143,7 @@ class SignupForm extends Component {
             id="password"
             value={password}
             name="password"
+            class="six wide field"
             onChange={this.handleChange}
           />
           </Form.Field>
@@ -150,6 +156,7 @@ class SignupForm extends Component {
             id="confirm"
             value={passwordConf}
             name="passwordConf"
+            class="six wide field"
             onChange={this.handleChange}
           />
           </Form.Field>
