@@ -53,6 +53,7 @@ class CalendarEvent extends Component {
                 />
             </Form.Field>
             <Button
+            id="bc"
             type="submit"
             >Add event</Button>
         </Form> 

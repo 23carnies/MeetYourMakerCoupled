@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button } from 'semantic-ui-react'
+import { Form, Button, Container } from 'semantic-ui-react'
 import axios from 'axios'
 
 class SellerSetup extends Component {
@@ -52,6 +52,7 @@ class SellerSetup extends Component {
     render() { 
         return ( 
         <>
+        <Container>
         <Form id="cf" ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
         <h1>Store Setup</h1>
         {/* Name Input */}
@@ -103,6 +104,7 @@ class SellerSetup extends Component {
             Start Selling
           </Button>
         </Form>
+        </Container>
         </>
          );
     }

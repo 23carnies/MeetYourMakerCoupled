@@ -24,7 +24,7 @@ const Store = (props) => {
                     <>
                         <p>Average Review:  {(strIdx.reviews.reduce((prev, cur) => 
         ({rating: prev.rating + cur.rating})).rating / strIdx.reviews.length)}</p>  
-        <br/> <Link
+        <br/> <Link id="a"
           to={{
             pathname: `/store/${strIdx._id}/reviews`,
             state: {strIdx}
@@ -39,7 +39,7 @@ const Store = (props) => {
             
             {props.user._id !== strIdx.createdBy ?
             
-            <Link
+            <Link 
               to={{
                   pathname: `/store/${strIdx._id}/review`,
                   state: {strIdx}
@@ -84,25 +84,26 @@ const Store = (props) => {
        
     {props.user._id===strIdx.createdBy &&
         <>
-        <Container>
+            <div id="pc">
             <NewProductForm 
                 handleAddProduct = {props.handleAddProduct}
                 history={props.history}
                 index={props.match.params.idx}
                 strIdx={strIdx}
                 />
-            <Container>
+       
                 <Link
                 to={{
                     pathname: '/store/edit',
                     state: {strIdx},
                 }}
                 >
-                    <Button color='orange'>Update Store</Button>
-                </Link>
-                <Button color='red' onClick={() => props.handleDeleteStore(strIdx._id)}>Delete Store</Button>
-            </Container>
-        </Container>        
+                    <Button className="but" color='orange'>Update Store</Button>
+                </Link> 
+                
+                <Button className="but" color='red' onClick={() => props.handleDeleteStore(strIdx._id)}>Delete Store</Button>
+       
+            </div>        
         </>
         }
         </>

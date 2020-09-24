@@ -1,3 +1,46 @@
+:root {
+    color: black !important;
+    --fc-small-font-size: .85em;
+    --fc-page-text-color: black;
+    --fc-page-bg-color: black;
+    --fc-neutral-bg-color: rgba(238, 223, 223, 0.3);
+    --fc-neutral-text-color: black !important;
+    --fc-border-color: rgb(0, 0, 0);
+  
+    --fc-button-text-color: rgb(0, 0, 0);
+    --fc-button-bg-color: #2C3E50;
+    --fc-button-border-color: #2C3E50;
+    --fc-button-hover-bg-color: #1e2b37;
+    --fc-button-hover-border-color: #1a252f;
+    --fc-button-active-bg-color: #1a252f;
+    --fc-button-active-border-color: #151e27;
+    --fc-past-background-color: silver;
+
+    --fc-event-bg-color: rgba(55, 73, 4, 0.863);
+    --fc-event-border-color: rgb(37, 49, 3);
+    --fc-event-text-color: #fff;
+    --fc-event-selected-overlay-color: rgba(0, 0, 0, 0.25);
+  
+    --fc-event-resizer-thickness: 8px;
+    --fc-event-resizer-dot-total-width: 8px;
+    --fc-event-resizer-dot-border-width: 1px;
+  
+    --fc-non-business-color: rgba(215, 215, 215, 0.3);
+    --fc-daygrid-text-color: black;
+    --fc-bg-event-color: rgb(143, 223, 130);
+    --fc-bg-event-opacity: 1;
+    --fc-highlight-color: rgba(188, 232, 241, 0.3);
+    --fc-today-bg-color: rgba(0, 0, 0, 0.15);
+    --fc-now-indicator-color: rgb(102, 44, 44);
+  }
+
+#back {
+    background-color: rgb(112, 38, 13);
+}
+
+body {
+    background-color: grey !important;
+}
 #cs {
     justify-content: center !important;
     text-align: center !important;
@@ -5,5 +48,5 @@
     align-content: center !important;
     display: flex;
     flex-direction: column;
-    
+    color: black !important;
 }
