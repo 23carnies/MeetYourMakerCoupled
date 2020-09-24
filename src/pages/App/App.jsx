@@ -29,7 +29,7 @@ class App extends Component {
     events: [],
     users: [],
     messages: [],
-    reviews: []
+    reviews: [],
   };
 
   handleLogout = () => {
