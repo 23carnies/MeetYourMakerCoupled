@@ -17,7 +17,7 @@ class SignupForm extends Component {
 
   handleUploadFile = e => {
     e.preventDefault()
-    console.log(e)
+    //console.log(e)
     const file = e.target.files[0];
     const bodyFormData = new FormData();
     bodyFormData.append('image', file);
@@ -26,9 +26,9 @@ class SignupForm extends Component {
         'Content-Type': 'multipart/form-data'
         }
     }).then(response => {
-        console.log(response);
+        //console.log(response);
         const imgUrl = response.data.imageUrl
-        console.log(imgUrl)
+        //console.log(imgUrl)
         this.setState({
           avatar: imgUrl,
         })
