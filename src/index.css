@@ -1,13 +1,24 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Raleway', 'Verdana', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(247, 236, 205) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Vollkorn', 'Georgia', serif !important;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+button {
+  margin: 8px !important;
+  border: 1px solid rgb(57, 14, 0) !important;
+  color: rgb(57, 14, 0) !important;
+  background-color: rgb(245, 99, 1) !important;
+}
+

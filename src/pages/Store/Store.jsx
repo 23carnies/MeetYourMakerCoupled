@@ -15,23 +15,22 @@ const Store = (props) => {
         <>
         {strIdx ?
          <Container>
-         {console.log(strIdx.reviews)}
             <div>{<img src={strIdx.storePicture}></img>}</div>
             <h1>{strIdx.storeName}</h1>
             <h3>Location: {strIdx.storeLocation}</h3>
             <div>Bio: {strIdx.bio}</div>
-            <div>
+
                 {strIdx.reviews.length ?   
                     <>
                         <p>Average Review:  {(strIdx.reviews.reduce((prev, cur) => 
-        ({rating: prev.rating + cur.rating})).rating / strIdx.reviews.length)}  
+        ({rating: prev.rating + cur.rating})).rating / strIdx.reviews.length)}</p>  
         <Link
           to={{
             pathname: `/store/${strIdx._id}/reviews`,
             state: {strIdx}
             }}
         >
-        View All Reviews</Link></p>
+        <p>View All Reviews</p></Link>
                     </>     
                     :
                     <p>No reviews yet</p>
@@ -55,7 +54,7 @@ const Store = (props) => {
             </>
             }     
             </>      
-            </div>
+
         </Container> 
          :
          <p>Loading...</p>

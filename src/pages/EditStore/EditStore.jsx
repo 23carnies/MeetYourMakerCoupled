@@ -14,7 +14,7 @@ class EditStore extends Component {
     handleSubmit = e => {
        e.preventDefault();
        this.props.handleUpdateStore(this.state.formData);
-
+       //this.props.history
      };
 
     handleChange = e => {

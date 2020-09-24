@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
+import './NavBar.css'
 
 export default class NavBar extends Component {
   state = {}
@@ -12,7 +13,7 @@ export default class NavBar extends Component {
     const {user, handleLogout } = this.props
 
     return (
-        <Menu stackable color='blue' inverted>
+        <Menu stackable id="nav">
         {!user ? <>
         {/* These links are for visitors not logged in/signed up */}
           <Menu.Item>
@@ -43,18 +44,18 @@ export default class NavBar extends Component {
       <Menu.Item>
         <img src='/logo.png' />
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item id="welc">
         Welcome {user.name}!
       </Menu.Item>
 
 
         {/* Nav link to Seller */}
-        <Menu.Item
+        <Menu.Item className="nav-item"
         name='sellers'
         active={activeItem === 'sellers'}
         onClick={this.handleItemClick}
       >
-        <Link to='/sellers' >Makers</Link>
+        <Link to='/sellers'  className="nav-item">Makers</Link>
         </Menu.Item>
               {/* Nav link to Calendar form */}
       <Menu.Item
@@ -79,7 +80,7 @@ export default class NavBar extends Component {
         <Menu.Item>
         <img src='/logo.png' />
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item id="welcome">
         Welcome {user.name}!
       </Menu.Item>
 
@@ -89,12 +90,12 @@ export default class NavBar extends Component {
         active={activeItem === 'setup-store'}
         onClick={this.handleItemClick}
       >
-        <Link to='/setup-store' >Setup Store</Link>
+        <Link to='/setup-store'  className="nav-item">Setup Store</Link>
         
       </Menu.Item>
      
             {/* Nav link to Seller */}
-            <Menu.Item
+            <Menu.Item className="nav-item"
         name='sellers'
         active={activeItem === 'sellers'}
         onClick={this.handleItemClick}
@@ -127,7 +128,7 @@ export default class NavBar extends Component {
         <Menu.Item>
         <img src='/logo.png' />
         </Menu.Item>
-        <Menu.Item>
+        <Menu.Item id="back">
         Welcome back {user.name}!
       </Menu.Item>
       {/* Nav link to Inbox  */}
