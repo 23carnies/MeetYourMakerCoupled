@@ -3,6 +3,8 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import CalendarEvent from '../../components/CalendarEvent/CalendarEvent'
 import * as eventAPI from "../../services/calendarEvents-api"
+import {Container, Grid} from 'semantic-ui-react';
+import './Calendar.css'
 
 export default class Calendar extends Component {
   state= {
@@ -24,16 +26,23 @@ export default class Calendar extends Component {
 
     return (
       <>
+      <Container>
       <FullCalendar
         plugins={[ dayGridPlugin ]}
         initialView="dayGridMonth"
         events={this.state.events}
 
       />
+      </Container>
+      <br/><br/>
+      <Container id='cs'>
+       
       <CalendarEvent
           handleAddCalendarEvent = {this.handleAddCalendarEvent}
           history={this.props.history}
       />
+    
+      </Container>
       </>
     )
   }

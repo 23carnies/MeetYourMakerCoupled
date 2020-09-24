@@ -163,8 +163,10 @@ class App extends Component {
           render={() => (
             <main>
               <h1>Welcome Atlanta to Meet Your Maker!</h1>
+              <br/> <br/>
               <CategoryCard 
               />
+              <br/> <br/>
             </main>
           )}
         />

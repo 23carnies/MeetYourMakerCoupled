@@ -38,21 +38,17 @@ class CategoryCard extends Component {
         return ( 
             <>
             <Container>
-                <Card.Group>
-                    {this.state.categories.map((category, idx) =>
-                <Link
-                    to={{
-                    pathname: `/category/${idx}`,
-                    state: this.state.categories[idx]
-                }}
+                <Card.Group
                 >
+                    {this.state.categories.map((category, idx) =>
                         <Card
+                            centered={true}
+                            href={`category/${idx}`}
                             key={idx}
                             image={category.image}
                             header={category.name}
                             description={category.description}
                             />
-                </Link>
                         )}
                 </Card.Group>
             </Container>
