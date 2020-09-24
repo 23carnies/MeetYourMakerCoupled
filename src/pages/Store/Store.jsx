@@ -78,22 +78,26 @@ const Store = (props) => {
         
     {props.user._id===strIdx.createdBy &&
         <>
-        <NewProductForm 
-            handleAddProduct = {props.handleAddProduct}
-            history={props.history}
-            index={props.match.params.idx}
-            strIdx={strIdx}
-            />
-            <Link
-              to={{
-                  pathname: '/store/edit',
-                  state: {strIdx},
-              }}
-            >
-                <Button color='orange'>Update Store</Button>
-            </Link>
-            <Button color='red' onClick={() => props.handleDeleteStore(strIdx._id)}>Delete Store</Button>
+        <Container>
+            <NewProductForm 
+                handleAddProduct = {props.handleAddProduct}
+                history={props.history}
+                index={props.match.params.idx}
+                strIdx={strIdx}
+                />
+            <Container>
+                <Link
+                to={{
+                    pathname: '/store/edit',
+                    state: {strIdx},
 
+                }}
+                >
+                    <Button color='orange'>Update Store</Button>
+                </Link>
+                <Button color='red' onClick={() => props.handleDeleteStore(strIdx._id)}>Delete Store</Button>
+            </Container>
+        </Container>
         
         </>
         }

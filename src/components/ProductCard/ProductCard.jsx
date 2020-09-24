@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 const ProductCard = ({product, strIdx, user, handleDeleteProduct, index}) => (
 
     <Card>
-      <Image src={product.image} wrapped ui={false} />
+      <Image src={product.image} height="50px" wrapped ui={false} alt="cheese"/>
       <Card.Content>
         <Card.Description>{product.name}</Card.Description>
         <Card.Meta>{strIdx.storeLocation}</Card.Meta>

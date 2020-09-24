@@ -72,12 +72,12 @@ class NewProductForm extends Component {
             value={this.state.formData.category}
             onChange={this.handleChange}>
                 <option value="please select a category">Please Select A Category</option>
-                <option value="cat1">1</option>
-                <option value="cat2">2</option>
-                <option value="cat3">3</option>
-                <option value="cat4">4</option>
-                <option value="cat5">5</option>
-                <option value="cat6">6</option>
+                <option value="Home Harvested">Home Harvested</option>
+                <option value="Hand Crafted">Hand Crafted</option>
+                <option value="Home Baked">Home Baked</option>
+                <option value="Home Preservation">Home Preservation</option>
+                <option value="Home Brewed">Home Brewed</option>
+                <option value="Home Built">Home Built</option>
             </select>
           </Form.Field>
             {/* Name Input */}
@@ -92,7 +92,7 @@ class NewProductForm extends Component {
             </Form.Field>
             {/* Image Input */}
             <Form.Field>
-                <label>Item Image(image link, required)</label>
+                <label>Item Image(required)</label>
                 <input
                 name="image"
                 value={this.state.formData.image}
