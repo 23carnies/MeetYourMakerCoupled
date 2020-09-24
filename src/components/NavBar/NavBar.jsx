@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
+
 export default class NavBar extends Component {
   state = {}
 
@@ -124,7 +125,7 @@ export default class NavBar extends Component {
       </>
       :
       <>
-        <Menu.Item>
+        <Menu.Item >
         <img src='/logo.png' />
         </Menu.Item>
         <Menu.Item>
@@ -132,6 +133,7 @@ export default class NavBar extends Component {
       </Menu.Item>
       {/* Nav link to Inbox  */}
       <Menu.Item
+      id="navitem"
       name='inbox'
       active={activeItem === 'inbox'}
       onClick={this.handleItemClick}

@@ -1,6 +1,7 @@
 import userEvent from '@testing-library/user-event'
 import React, { Component } from 'react'
 import { Form, Button } from 'semantic-ui-react'
+import './CalendarEvent.css'
 
 class CalendarEvent extends Component {
     state = { 
@@ -34,6 +35,7 @@ class CalendarEvent extends Component {
     render() { 
         return (     
         <>
+        <h3> Add an event!</h3>
         <Form id="cf" ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
             <Form.Field>
                 <label>Event name - location</label>

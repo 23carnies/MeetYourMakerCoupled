@@ -5,9 +5,8 @@ import {Link} from 'react-router-dom';
 
 
 const ProductCard = ({product, strIdx, user, handleDeleteProduct, index}) => (
-
-    <Card>
-      <Image src={product.image} height="50px" wrapped ui={false} alt="cheese"/>
+    <Card centered>
+      <Image src={product.image} wrapped ui={false} alt="cheese"/>
       <Card.Content>
         <Card.Description>{product.name}</Card.Description>
         <Card.Meta>{strIdx.storeLocation}</Card.Meta>
@@ -15,6 +14,13 @@ const ProductCard = ({product, strIdx, user, handleDeleteProduct, index}) => (
         <Card.Description>{product.category}</Card.Description>
         <Card.Meta>{product.countInStock}</Card.Meta>
         <Card.Description>{product.description}</Card.Description>
+        <Link
+to={{
+    pathname: '/mail',
+    state: {strIdx, product}
+}}
+> 
+        <Button>Contact Seller about this product</Button> </Link>
         {user._id===strIdx.createdBy &&
         <>
             <Link 
