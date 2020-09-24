@@ -1,6 +1,6 @@
 import React from "react";
 import ReviewCard from '../../components/ReviewCard/ReviewCard'
-import { Card, Container, Message } from 'semantic-ui-react';
+import { Container, Message } from 'semantic-ui-react';
 
 const Reviews = (props) => {
     const newStore = props.stores.filter((store) => store._id === props.match.params.idx)

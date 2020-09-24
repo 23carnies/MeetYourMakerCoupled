@@ -164,7 +164,6 @@ class App extends Component {
             <main>
               <h1>Welcome Atlanta to Meet Your Maker!</h1>
               <CategoryCard 
-              
               />
             </main>
           )}

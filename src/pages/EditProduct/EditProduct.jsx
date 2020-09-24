@@ -27,11 +27,8 @@ class EditProduct extends Component {
             this.setState({
                 formData,
             })
-            // setImage(response.data);
-            // setUploading(false);
         }).catch(err =>{
             console.log(err);
-            // setUploading(false);
         });
     }
 
@@ -91,7 +88,6 @@ class EditProduct extends Component {
             </Form.Field>
             <Form.Field>
                 <input type="file" name="image" onChange={this.handleUploadFile}></input>
-                {/* {uploading && <div>Uploading...</div>} */}
             </Form.Field>
             {/* Price Input */}
             <Form.Field>

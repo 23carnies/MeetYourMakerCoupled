@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { getAllUsers } from "../../services/userService";
 
-
 class Users extends Component {
   state = {
     users: [],

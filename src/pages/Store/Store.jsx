@@ -1,8 +1,6 @@
-import userEvent from '@testing-library/user-event';
-import React, { Component } from 'react';
-import { Container, Button, Card } from 'semantic-ui-react'
+import React from 'react';
+import { Container, Button } from 'semantic-ui-react'
 import ProductCard from '../../components/ProductCard/ProductCard'
-import ReviewCard from '../../components/ReviewCard/ReviewCard'
 import NewProductForm from '../../components/NewProductForm/NewProductForm'
 import { Link } from 'react-router-dom';
 
@@ -82,12 +80,10 @@ const Store = (props) => {
                         index={index}
                     />    
                 </Link>
-
                 
             )}
         </div>
        
-        
     {props.user._id===strIdx.createdBy &&
         <>
         <Container>
@@ -102,33 +98,21 @@ const Store = (props) => {
                 to={{
                     pathname: '/store/edit',
                     state: {strIdx},
-
                 }}
                 >
                     <Button color='orange'>Update Store</Button>
                 </Link>
                 <Button color='red' onClick={() => props.handleDeleteStore(strIdx._id)}>Delete Store</Button>
             </Container>
-        </Container>
-        
+        </Container>        
         </>
         }
         </>
-
         :
         <p>Loading...</p>
         }
-
         </>
      );
 }
  
-export default Store;
-
-
-
-// <ReviewCard 
-// key={idx}
-// review={review}
-// strIdx={strIdx}
-// />      
+export default Store;     

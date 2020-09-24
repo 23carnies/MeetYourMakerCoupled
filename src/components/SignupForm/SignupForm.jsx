@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import './signup.css'
-import { Form, Input, Button } from 'semantic-ui-react'
+import './SignupForm.css';
+import { Form, Button } from 'semantic-ui-react';
 import authService from "../../services/authService";
 import axios from "axios"
 
@@ -33,11 +32,8 @@ class SignupForm extends Component {
         this.setState({
           avatar: imgUrl,
         })
-        // setImage(response.data);
-        // setUploading(false);
     }).catch(err =>{
         console.log(err);
-        // setUploading(false);
     });
 }
 
@@ -97,7 +93,6 @@ class SignupForm extends Component {
           <Form.Field>
           <label htmlFor="avatar">Avatar Image</label>
           <input
-            // placeholder="http://www.image.png"
             type="text"
             autoComplete="off"
             id="avatar"
@@ -108,7 +103,6 @@ class SignupForm extends Component {
           </Form.Field>
           <Form.Field>
                 <input type="file" name="avatar" onChange={this.handleUploadFile}></input>
-                {/* {uploading && <div>Uploading...</div>} */}
             </Form.Field>
           <br/>
           <Form.Field>

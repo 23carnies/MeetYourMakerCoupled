@@ -24,7 +24,6 @@ class Login extends Component {
       handleSignupOrLogin();
       history.push("/");
     } catch (err) {
-      // Use a modal or toast in your apps instead of alert
       alert('Invalid Credentials!');
     }
   };

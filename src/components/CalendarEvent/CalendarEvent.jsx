@@ -1,4 +1,3 @@
-import userEvent from '@testing-library/user-event'
 import React, { Component } from 'react'
 import { Form, Button } from 'semantic-ui-react'
 
@@ -9,7 +8,6 @@ class CalendarEvent extends Component {
             title: '',
             date: ''
         }
-
      }
 
      handleSubmit = e => {
