@@ -163,7 +163,9 @@ class App extends Component {
           render={() => (
             <main>
               <h1>Welcome Atlanta to Meet Your Maker!</h1>
-              <CategoryCard />
+              <CategoryCard 
+              
+              />
             </main>
           )}
         />
@@ -328,6 +330,21 @@ class App extends Component {
         <Route
           exact
           path="/mail"
+          render={({ history }) =>
+            authService.getUser() ? (
+              <Nodemailer
+                handleNodemailer={this.handleNodemailer}
+                history={history}
+                user={user}
+              />
+            ) : (
+              <Redirect to="/login" />
+            )
+          }
+        />
+        <Route
+          exact
+          path="/category/:id"
           render={({ history }) =>
             authService.getUser() ? (
               <Nodemailer
