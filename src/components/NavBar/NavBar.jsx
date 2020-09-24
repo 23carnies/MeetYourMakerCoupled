@@ -92,7 +92,7 @@ export default class NavBar extends Component {
         <Link to='/setup-store' >Setup Store</Link>
         
       </Menu.Item>
-     
+    
             {/* Nav link to Seller */}
             <Menu.Item
         name='sellers'

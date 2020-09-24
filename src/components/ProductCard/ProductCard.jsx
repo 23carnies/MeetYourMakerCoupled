@@ -1,4 +1,3 @@
-import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { Card, Image, Button } from 'semantic-ui-react'
 import {Link} from 'react-router-dom';

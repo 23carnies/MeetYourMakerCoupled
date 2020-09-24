@@ -1,8 +1,6 @@
 import React, { Component, useState } from 'react';
 import { Form, Button } from 'semantic-ui-react';
 import axios from 'axios';
-import { preventDefault } from '@fullcalendar/react';
-
 
 class NewProductForm extends Component {
     state = { 
@@ -35,11 +33,8 @@ class NewProductForm extends Component {
             this.setState({
                 formData,
             })
-            // setImage(response.data);
-            // setUploading(false);
         }).catch(err =>{
             console.log(err);
-            // setUploading(false);
         });
     }
 
@@ -55,8 +50,6 @@ class NewProductForm extends Component {
             formData,
         })
     }
-    
-
 
     formRef = React.createRef();
 
@@ -102,7 +95,6 @@ class NewProductForm extends Component {
                 </Form.Field>
                 <Form.Field>
                 <input type="file" name="image" onChange={this.handleUploadFile}></input>
-                {/* {uploading && <div>Uploading...</div>} */}
             </Form.Field>
             {/* Price Input */}
             <Form.Field>
