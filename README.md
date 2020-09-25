@@ -27,7 +27,7 @@ Team member Karen and her husband are urban farmers and creaters and dislike the
 
 ---
 
-### Minimum Viable Product
+## Minimum Viable Product
 * AAU I should be able to register for an account.
 * AAU I should be able to login/out
 * AAU I should be able to add local events to a calendar
@@ -44,7 +44,6 @@ Team member Karen and her husband are urban farmers and creaters and dislike the
 
 #### ERD
 ![Current ERD](public/images/Current ERD.png)
-![Original ERD](public/images/Original_ERD.png)
 
 ---
 
@@ -64,7 +63,7 @@ Team member Karen and her husband are urban farmers and creaters and dislike the
 
 ---
 
-### User Stories
+## User Stories
 Karen and Mike sell eggs and honey. They don't like facebook but it's the only way to the their neighbors know when new harvests are in. They would love an app that would allow them a little home to display their wares and respond to buyer inquiries.
  
  Jane is laid off from her job due to Covid19. She bakes cakes and cookies and could sell them for extra money. She needs a platform to let people in her area know of her new goods and chat with her about orders. She would like to have a page of her own to show her unique style.
@@ -73,15 +72,16 @@ Megan has missed being able to sell her jewelry at local markets. Her hobby of m
 
 ---
 
-### Screenshots
-![Image](public/images/sShot1.png)
-![Image](public/images/sShot2.png)
-![Image](public/images/sShot3.png)
+## Screenshots
+![Home Screen](public/images/HomeScreenshot.png)
+---
+![All Makers](public/images/Store List.png)
+---
+![Maker Store Items](public/images/Maker Store.png)
 
 ---
 
-
-### Stretch Goals/ What Comes Next
+## Stretch Goals/ What Comes Next
 - [ ] Implement other locations to match makers/buyers
 - [x] Give cities/towns the ability to integrate Makers Markets/Farmers Markets to the calendar
 - [ ] Give Makers the ability to review buyers as well
@@ -90,7 +90,7 @@ Megan has missed being able to sell her jewelry at local markets. Her hobby of m
 
 ---
 
-###Technologies Used
+## Technologies Used
 - Javascript
 - Html
 - CSS
@@ -112,8 +112,12 @@ Megan has missed being able to sell her jewelry at local markets. Her hobby of m
 - Powtoon
 - Git
 
-### Photo Credits
+## Photo Credits
 Landing Page Photos
 
 * Koombucha picture from holyfamily.com
 * Jelly picture from B&S Pepper Company, Atlanta
+
+---
+
+[Open MYM](https://salty-coast-15461.herokuapp.com/)
