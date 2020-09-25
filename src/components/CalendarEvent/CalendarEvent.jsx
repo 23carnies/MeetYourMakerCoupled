@@ -52,8 +52,8 @@ class CalendarEvent extends Component {
                     required
                 />
             </Form.Field>
-            <Button
-            id="bc"
+            <Button 
+            color="brown"
             type="submit"
             >Add event</Button>
         </Form> 

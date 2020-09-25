@@ -110,6 +110,7 @@ const Store = (props) => {
         :
         <p>Loading...</p>
         }
+        <br/> <br/>
         </>
      );
 }

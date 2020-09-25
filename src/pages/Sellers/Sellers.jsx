@@ -22,6 +22,7 @@ const Sellers = (props) => {
         :
         <p>Loading...</p>
       }
+      <br/> <br/> 
     </>
    );
 }

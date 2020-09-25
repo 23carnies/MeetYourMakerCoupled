@@ -160,7 +160,7 @@ class SignupForm extends Component {
             onChange={this.handleChange}
           />
           </Form.Field>
-          <Button disabled={this.isFormInvalid()}>Sign Up</Button>
+          <Button color="brown" disabled={this.isFormInvalid()}>Sign Up</Button>
         </Form>
 
     );

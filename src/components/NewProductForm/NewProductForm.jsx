@@ -55,6 +55,8 @@ class NewProductForm extends Component {
 
     render() { 
         return ( 
+            <>
+            <br/> <br/> <br/> <br/> 
             <Form id="cf" ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
             <h1>Add Item</h1>
             {/* Category Input */}
@@ -133,6 +135,7 @@ class NewProductForm extends Component {
             Submit
           </Button>
         </Form>
+        </>
          );
     }
 }

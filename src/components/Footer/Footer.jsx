@@ -6,7 +6,7 @@ const Footer = () => {
     return ( 
         <Menu id="nav">
             <Menu.Item>
-                <Icon name="twitter square" size="large" id="twitter" />
+                <a href="https://twitter.com/TeamMYMAtl"><Icon name="twitter square" size="large" id="twitter" /></a>
             </Menu.Item>
 
             <Menu.Item>

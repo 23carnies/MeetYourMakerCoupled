@@ -8,6 +8,7 @@ const Reviews = (props) => {
     console.log(store)
     return ( 
         <>
+        <br/> <br/> 
         {store && (
             <div>
                 <Container>
@@ -33,6 +34,7 @@ const Reviews = (props) => {
                 </div>
 
         )}
+        <br/> <br/> <br/> <br/> 
         </>
      );
 }
