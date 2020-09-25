@@ -127,6 +127,7 @@ class NewProductForm extends Component {
                 />
             </Form.Field>
             <Button
+            color="brown"
             type="submit"
           >
             Submit
