@@ -43,7 +43,8 @@ Team member Karen and her husband are urban farmers and creaters and dislike the
 ## ERD and Wireframes
 
 #### ERD
-![Current ERD](public/images/Current ERD.png)
+
+![](public/images/CurrentERD.png)
 
 ---
 
@@ -53,7 +54,6 @@ Team member Karen and her husband are urban farmers and creaters and dislike the
 ![Image](public/images/WFSS1.png)
 
 ---
-
 ![Image](public/images/WFSS2.png)
 
 
@@ -74,10 +74,12 @@ Megan has missed being able to sell her jewelry at local markets. Her hobby of m
 
 ## Screenshots
 ![Home Screen](public/images/HomeScreenshot.png)
+
 ---
-![All Makers](public/images/Store List.png)
+![All Makers](public/images/StoreList.png)
+
 ---
-![Maker Store Items](public/images/Maker Store.png)
+![Maker Store Items](public/images/MakerStore.png)
 
 ---
 
