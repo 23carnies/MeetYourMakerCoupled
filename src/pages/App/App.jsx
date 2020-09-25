@@ -7,6 +7,7 @@ import Sellers from "../Sellers/Sellers";
 import SellerSetup from "../SellerSetup/SellerSetup";
 import Store from "../Store/Store";
 import Calendar from "../Calendar/Calendar";
+import Footer from "../../components/Footer/Footer"
 import "./App.css";
 import authService from "../../services/authService";
 import * as userAPI from "../../services/userService";
@@ -362,6 +363,7 @@ class App extends Component {
             )
           }
         />
+        <Footer />
       </>
     );
   }
