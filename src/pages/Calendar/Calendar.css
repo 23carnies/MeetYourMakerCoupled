@@ -50,3 +50,7 @@ body {
     flex-direction: column;
     color: black !important;
 }
+
+#c {
+    text-align: center;
+}
