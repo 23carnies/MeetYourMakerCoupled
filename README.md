@@ -2,7 +2,7 @@
 ### A wonderful market place designed by Karen, Robert, and Earl
 
 ---
-[Open MYM](https://salty-coast-15461.herokuapp.com/)
+[Open MYM](https://meetyourmaker925.herokuapp.com/login)
 
 For all those individuals who would like to sell their goods in a more friendly environement here is Meet Your Maker. Logging into Meet Your Maker allows the choice of buying, selling, or browsing local goods and services. Login to browse stores and products. Then alert the seller of desire to purchase the goods from the site via a built-in mailer. Users can review stores and leave feedback for other potential customers. Makers can create their store and upload images for their storefront as well as their products. All users can view and add calendar events to emphasize community-driven events.
 
@@ -119,7 +119,8 @@ Landing Page Photos
 
 * Koombucha picture from holyfamily.com
 * Jelly picture from B&S Pepper Company, Atlanta
+* Other pictures from Karen Lobin Perkins
 
 ---
 
-[Open MYM](https://salty-coast-15461.herokuapp.com/)
+[Open MYM](https://meetyourmaker925.herokuapp.com/login)
