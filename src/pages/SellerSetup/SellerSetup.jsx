@@ -99,6 +99,7 @@ class SellerSetup extends Component {
             />
             </Form.Field>
           <Button
+            color="brown"
             type="submit"
           >
             Start Selling

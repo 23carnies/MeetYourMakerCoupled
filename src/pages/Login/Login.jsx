@@ -31,8 +31,9 @@ class Login extends Component {
   render() {
     const {email, pw} = this.state
     return (
+      <>
       <Container id="mess">
-        <br/><br/><br/><br/><br/>
+        <br/><br/><br/>
         <Card fluid id="lc">
           <Image id="image"src="https://www.bates.edu/wordpress/files/2016/07/texture-16.jpg" /> <br/>
           <Card.Header id="hdf">Log In</Card.Header><br/>
@@ -61,14 +62,16 @@ class Login extends Component {
             />
             <label htmlFor="password">Password</label>
             </Form.Field> <br/> 
-            <Button>Log In</Button>&nbsp;&nbsp;&nbsp;
+            <Button color="brown">Log In</Button>&nbsp;&nbsp;&nbsp;
             <Link className="btn red" to="/signup">
-              <Button>Signup</Button>
+              <Button color="basic brown">Signup</Button>
             </Link>
             <br/> <br/> <br/> <br/> 
           </Form>
         </Card>
       </Container>
+      <br/> <br/> <br/> <br/> 
+      </>
     );
   }
 }

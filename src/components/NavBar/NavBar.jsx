@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import './NavBar.css'
 
@@ -20,7 +20,7 @@ export default class NavBar extends Component {
           <Menu.Item>
           <img src='/logo.png' alt="logo"/>
         </Menu.Item>
-
+ 
         <Menu.Item
           position='right'
           name='sign-up'
@@ -37,6 +37,9 @@ export default class NavBar extends Component {
         >
           <a href="/login">Log-in</a>
         </Menu.Item>
+        <Menu.Item>
+                <a href="https://twitter.com/TeamMYMAtl"><Icon name="twitter square" size="large" id="twitter" /></a>
+            </Menu.Item>
         </>
         :
         //These links are for Users that are not Sellers------------

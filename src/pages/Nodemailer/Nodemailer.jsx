@@ -30,6 +30,8 @@ class Nodemailer extends Component {
 
     render() { 
         return ( 
+          <>
+          <br/> <br/> <br/> <br/> 
           <div id="fc">
           <Container>
             <Form id="cf" ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
@@ -69,6 +71,7 @@ class Nodemailer extends Component {
             </Form.Field>
 
             <Button
+            color="brown"
             type="submit"
           >
             Submit
@@ -76,6 +79,8 @@ class Nodemailer extends Component {
         </Form>
         </Container>
         </div>
+        <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> 
+        </>
          );
     }
 }

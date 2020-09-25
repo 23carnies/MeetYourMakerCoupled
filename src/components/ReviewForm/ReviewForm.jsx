@@ -70,13 +70,15 @@ class ReviewForm extends Component {
                     required
                     />
                 </Form.Field>
-                <Button
+                <Button 
+                color="brown"
                 type="submit"
               >
                 Submit
               </Button>
             </Form>
             </Container>
+            <br/> <br/> <br/> <br/> 
             </>
              );
         }

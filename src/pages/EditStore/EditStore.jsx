@@ -71,12 +71,14 @@ class EditStore extends Component {
             />
             </Form.Field>
           <Button
+            color="brown"
             type="submit"
             disabled={this.state.invalidForm}
           >
             Save Store
           </Button>
         </Form>
+        <br/> <br/> <br/> <br/> 
         </>
          );
     }
