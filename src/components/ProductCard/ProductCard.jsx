@@ -20,7 +20,7 @@ to={{
     state: {strIdx, product}
 }}
 > 
-        <Button>Contact Seller about this product</Button> </Link>
+        <Button basic color="brown">Contact Seller about this product</Button> </Link>
         {user._id===strIdx.createdBy &&
         <>
             <Link 
@@ -31,7 +31,7 @@ to={{
               index: {index}
               }}
             >
-            <Button color='orange'>Update Product</Button>
+            <Button color='brown'>Update Product</Button>
             </Link>
             
             <Button color='red' onClick={() => handleDeleteProduct(product._id, strIdx._id, index)}>Delete Product</Button>

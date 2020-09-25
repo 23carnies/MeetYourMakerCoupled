@@ -98,7 +98,7 @@ const Store = (props) => {
                     state: {strIdx},
                 }}
                 >
-                    <Button className="but" color='orange'>Update Store</Button>
+                    <Button color="brown" className="but"  >Update Store</Button>
                 </Link> 
                 
                 <Button className="but" color='red' onClick={() => props.handleDeleteStore(strIdx._id)}>Delete Store</Button>
