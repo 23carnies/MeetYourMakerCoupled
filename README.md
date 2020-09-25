@@ -3,7 +3,7 @@ A wonderful market place designed by Karen, Robert, and Earl
 
 ## Get Started 
 ---
-[Link](InsertLinkHere)
+[Link](https://meetyourmaker925.herokuapp.com/)
 This app exists for all those individuals who would like to sell their goods in a more friendly environment. As users log into the MYM app, they can choose to buy/sell/browse local goods and services. After logging in, users can browse stores and products. They are then able to alert the seller of their desire to purchase the goods from the site via a built-in mailer. Users can review stores and leave feedback for other potential customers. As a maker creates a user as a seller they can; create a store, upload personalized images for their storefront, as well as their products! All users and sellers will be able to view and add calendar events so they can create community-driven events.
 ---
 
