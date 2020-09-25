@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu, Icon } from 'semantic-ui-react'
+import { Menu, Icon, Sticky } from 'semantic-ui-react'
 import './Footer.css'
 
 const Footer = () => {

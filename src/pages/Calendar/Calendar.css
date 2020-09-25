@@ -7,8 +7,8 @@
     --fc-neutral-text-color: black !important;
     --fc-border-color: rgb(0, 0, 0);
   
-    --fc-button-text-color: rgb(0, 0, 0);
-    --fc-button-bg-color: #2C3E50;
+    --fc-button-text-color: rgb(255, 254, 254);
+    --fc-button-bg-color: #134221;
     --fc-button-border-color: #2C3E50;
     --fc-button-hover-bg-color: #1e2b37;
     --fc-button-hover-border-color: #1a252f;
@@ -31,11 +31,12 @@
     --fc-bg-event-opacity: 1;
     --fc-highlight-color: rgba(188, 232, 241, 0.3);
     --fc-today-bg-color: rgba(0, 0, 0, 0.15);
-    --fc-now-indicator-color: rgb(102, 44, 44);
+    --fc-now-indicator-color: rgb(161, 72, 30);
+    --fc-today-button-color:  rgb(37, 49, 3);
   }
 
 #back {
-    background-color: rgb(112, 38, 13);
+    background-color: rgb(175, 117, 41);
 }
 
 body {

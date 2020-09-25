@@ -62,6 +62,7 @@ class SignupForm extends Component {
   render() {
     const { name, email, password, passwordConf, avatar, phone, isSeller } = this.state;
     return (
+    
       <Form autoComplete="off" onSubmit={this.handleSubmit}>
       <h3>Sign Up</h3>
           <Form.Field>
@@ -161,7 +162,9 @@ class SignupForm extends Component {
           />
           </Form.Field>
           <Button color="brown" disabled={this.isFormInvalid()}>Sign Up</Button>
+          <br/>
         </Form>
+  
 
     );
   }

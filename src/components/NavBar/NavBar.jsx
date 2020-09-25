@@ -132,18 +132,11 @@ export default class NavBar extends Component {
         <Menu.Item >
         <img src='/logo.png' />
         </Menu.Item>
-        <Menu.Item id="back">
+        <Menu.Item id="back1" >
         Welcome back {user.name}!
       </Menu.Item>
       {/* Nav link to Inbox  */}
-      <Menu.Item
-      id="navitem"
-      name='inbox'
-      active={activeItem === 'inbox'}
-      onClick={this.handleItemClick}
-      >        
-        Inbox
-      </Menu.Item> 
+
           
           {/* Nav link to Seller */}
           <Menu.Item

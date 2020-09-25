@@ -32,11 +32,12 @@ class Login extends Component {
     const {email, pw} = this.state
     return (
       <>
+      <br/><br/><br/>
       <Container id="mess">
         <br/><br/>
         <Card fluid id="lc">
           <Image id="logLogo" src="images/logoWhiteBkgr.jpg" />
-          <Image id="image"src="https://www.bates.edu/wordpress/files/2016/07/texture-16.jpg" /> <br/>
+          <br/><br/>
           <Card.Header id="hdf">Log In</Card.Header><br/>
           <Form autoComplete="off" onSubmit={this.handleSubmit}>
           <br/> 
@@ -67,7 +68,7 @@ class Login extends Component {
             <Link className="btn red" to="/signup">
               <Button color="basic brown">Signup</Button>
             </Link>
-            <br/> 
+            <br/> <br/>
           </Form>
         </Card>
       </Container>

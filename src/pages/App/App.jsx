@@ -159,6 +159,7 @@ class App extends Component {
 
     return (
       <>
+      <div id="main-wrapper">
         <NavBar user={user} handleLogout={this.handleLogout} />
         <Route
           exact
@@ -169,7 +170,6 @@ class App extends Component {
               <br/> <br/>
               <CategoryCard 
               />
-              <br/> <br/>
             </main>
           )}
         />
@@ -363,7 +363,8 @@ class App extends Component {
             )
           }
         />
-        <Footer />
+        </div>
+        <Footer />   
       </>
     );
   }

@@ -9,6 +9,13 @@
     align-items: center !important;
     text-align: center !important;
     max-width: 800px !important;
+    background-color: rgba(189, 168, 109, 0.548);
+    box-shadow: 5px 7px 2px rgb(138, 129, 103);;
+}
+ /* background-color :(204, 187, 137, 0.6); */
+#lc {
+    background-color: rgba(204, 187, 137, 0.0);
+    box-shadow: none;
 }
 
 #image {
@@ -23,4 +30,5 @@
 #logLogo {
     margin: 0 auto;
     max-width: 250px !important;
+ 
 }
