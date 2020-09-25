@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './ReviewForm.css'
-import { Form, Input, Button } from 'semantic-ui-react'
+import { Form, Input, Button, Container } from 'semantic-ui-react'
 
 class ReviewForm extends Component {
     state = { 
@@ -30,6 +30,9 @@ class ReviewForm extends Component {
 
         render() { 
             return ( 
+                <>
+                <Container>
+                <br/><br/><br/><br/>
                 <Form id="cf" ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
                 <h1>Add Item</h1>
                 {/* Category Input */}
@@ -73,6 +76,8 @@ class ReviewForm extends Component {
                 Submit
               </Button>
             </Form>
+            </Container>
+            </>
              );
         }
     }

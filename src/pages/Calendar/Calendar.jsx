@@ -26,6 +26,9 @@ export default class Calendar extends Component {
 
     return (
       <>
+       <br/>
+      <h1 id="c"> Event Calendar</h1>
+      <br/>
       <Container id="back">
       <FullCalendar
         plugins={[ dayGridPlugin ]}
@@ -43,6 +46,7 @@ export default class Calendar extends Component {
       />
     
       </div>
+      <br/><br/>
       </>
     )
   }
