@@ -18,6 +18,7 @@ class Signup extends Component {
         All fields are required
         <p>{this.state.message}</p>
         </Container>
+        <br/><br/>
       </main>
     );
   }
